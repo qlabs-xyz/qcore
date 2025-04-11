@@ -8,7 +8,6 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
-	"strings"
 	"sync"
 
 	abci "github.com/cometbft/cometbft/abci/types"
@@ -136,16 +135,11 @@ import (
 	"github.com/CosmWasm/wasmd/x/wasm"
 	wasmkeeper "github.com/CosmWasm/wasmd/x/wasm/keeper"
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
-	wasmvm "github.com/CosmWasm/wasmvm"
+	wasmvm "github.com/CosmWasm/wasmvm/v2"
 
 	wasmlc "github.com/cosmos/ibc-go/modules/light-clients/08-wasm"
 	wasmlckeeper "github.com/cosmos/ibc-go/modules/light-clients/08-wasm/keeper"
 	wasmlctypes "github.com/cosmos/ibc-go/modules/light-clients/08-wasm/types"
-
-	tokenfactory "github.com/strangelove-ventures/tokenfactory/x/tokenfactory"
-	tokenfactorybindings "github.com/strangelove-ventures/tokenfactory/x/tokenfactory/bindings"
-	tokenfactorykeeper "github.com/strangelove-ventures/tokenfactory/x/tokenfactory/keeper"
-	tokenfactorytypes "github.com/strangelove-ventures/tokenfactory/x/tokenfactory/types"
 
 	"github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v8/packetforward"
 	packetforwardkeeper "github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v8/packetforward/keeper"
@@ -184,18 +178,22 @@ const (
 	NodeDir      = ".qcore"
 	Bech32Prefix = "q"
 
-	ChainID = "localchain_9000-1"
+	ChainID = "localchain_90001-1"
 )
 
 var (
-	capabilities = strings.Join(
-		[]string{
-			"iterator",
-			"staking",
-			"stargate",
-			"cosmwasm_1_1", "cosmwasm_1_2", "cosmwasm_1_3", "cosmwasm_1_4",
-			"token_factory",
-		}, ",")
+	capabilities = []string{
+		"iterator",
+		"staking",
+		"stargate",
+		"cosmwasm_1_1",
+		"cosmwasm_1_2",
+		"cosmwasm_1_3",
+		"cosmwasm_1_4",
+		"cosmwasm_2_0",
+		"cosmwasm_2_1",
+		"cosmwasm_2_2",
+	}
 )
 
 func init() {
@@ -215,7 +213,7 @@ var (
 	BaseDenomUnit int64 = 18
 
 	BaseDenom    = "qnt"
-	DisplayDenom = "MY_DENOM_DISPLAY"
+	DisplayDenom = "QNC"
 
 	// Bech32PrefixAccAddr defines the Bech32 prefix of an account's address
 	Bech32PrefixAccAddr = Bech32Prefix
@@ -241,14 +239,13 @@ var maccPerms = map[string][]string{
 	govtypes.ModuleName:            {authtypes.Burner},
 	nft.ModuleName:                 nil,
 	// non sdk modules
-	ibctransfertypes.ModuleName:  {authtypes.Minter, authtypes.Burner},
-	ibcfeetypes.ModuleName:       nil,
-	icatypes.ModuleName:          nil,
-	wasmtypes.ModuleName:         {authtypes.Burner},
-	tokenfactorytypes.ModuleName: {authtypes.Minter, authtypes.Burner},
-	evmtypes.ModuleName:          {authtypes.Minter, authtypes.Burner},
-	feemarkettypes.ModuleName:    nil,
-	erc20types.ModuleName:        {authtypes.Minter, authtypes.Burner},
+	ibctransfertypes.ModuleName: {authtypes.Minter, authtypes.Burner},
+	ibcfeetypes.ModuleName:      nil,
+	icatypes.ModuleName:         nil,
+	wasmtypes.ModuleName:        {authtypes.Burner},
+	evmtypes.ModuleName:         {authtypes.Minter, authtypes.Burner},
+	feemarkettypes.ModuleName:   nil,
+	erc20types.ModuleName:       {authtypes.Minter, authtypes.Burner},
 }
 
 var (
@@ -297,7 +294,6 @@ type ChainApp struct {
 
 	// Custom
 	WasmKeeper          wasmkeeper.Keeper
-	TokenFactoryKeeper  tokenfactorykeeper.Keeper
 	PacketForwardKeeper *packetforwardkeeper.Keeper
 	WasmClientKeeper    wasmlckeeper.Keeper
 	RatelimitKeeper     ratelimitkeeper.Keeper
@@ -414,7 +410,6 @@ func NewChainApp(
 		wasmtypes.StoreKey,
 		icahosttypes.StoreKey,
 		icacontrollertypes.StoreKey,
-		tokenfactorytypes.StoreKey,
 		packetforwardtypes.StoreKey,
 		wasmlctypes.StoreKey,
 		ratelimittypes.StoreKey,
@@ -725,25 +720,7 @@ func NewChainApp(
 		corePrecompiles,
 	)
 
-	// Create the tokenfactory keeper
-	app.TokenFactoryKeeper = tokenfactorykeeper.NewKeeper(
-		appCodec,
-		app.keys[tokenfactorytypes.StoreKey],
-		maccPerms,
-		app.AccountKeeper,
-		app.BankKeeper,
-		app.DistrKeeper,
-		[]string{
-			tokenfactorytypes.EnableBurnFrom,
-			tokenfactorytypes.EnableForceTransfer,
-			tokenfactorytypes.EnableSetMetadata,
-			// tokenfactorytypes.EnableSudoMint,
-			tokenfactorytypes.EnableCommunityPoolFeeFunding,
-		},
-		tokenfactorykeeper.DefaultIsSudoAdminFunc,
-		authtypes.NewModuleAddress(govtypes.ModuleName).String(),
-	)
-	wasmOpts = append(wasmOpts, tokenfactorybindings.RegisterCustomPlugins(app.BankKeeper, &app.TokenFactoryKeeper)...)
+	wasmOpts = append(wasmOpts)
 
 	// IBC Fee Module keeper
 	app.IBCFeeKeeper = ibcfeekeeper.NewKeeper(
@@ -842,7 +819,7 @@ func NewChainApp(
 		app.GRPCQueryRouter(),
 		wasmDir,
 		wasmConfig,
-		strings.Join(AllCapabilities(), ","),
+		capabilities,
 		authtypes.NewModuleAddress(govtypes.ModuleName).String(),
 		wasmOpts...,
 	)
@@ -967,7 +944,6 @@ func NewChainApp(
 		ibctm.NewAppModule(),
 		crisis.NewAppModule(app.CrisisKeeper, skipGenesisInvariants, app.GetSubspace(crisistypes.ModuleName)),
 		// custom
-		tokenfactory.NewAppModule(app.TokenFactoryKeeper, app.AccountKeeper, app.BankKeeper, app.GetSubspace(tokenfactorytypes.ModuleName)),
 		packetforward.NewAppModule(app.PacketForwardKeeper, app.GetSubspace(packetforwardtypes.ModuleName)),
 		wasmlc.NewAppModule(app.WasmClientKeeper),
 		ratelimit.NewAppModule(appCodec, app.RatelimitKeeper),
@@ -1016,7 +992,6 @@ func NewChainApp(
 		icatypes.ModuleName,
 		ibcfeetypes.ModuleName,
 		wasmtypes.ModuleName,
-		tokenfactorytypes.ModuleName,
 		packetforwardtypes.ModuleName,
 		wasmlctypes.ModuleName,
 		ratelimittypes.ModuleName,
@@ -1037,7 +1012,6 @@ func NewChainApp(
 		icatypes.ModuleName,
 		ibcfeetypes.ModuleName,
 		wasmtypes.ModuleName,
-		tokenfactorytypes.ModuleName,
 		packetforwardtypes.ModuleName,
 		wasmlctypes.ModuleName,
 		ratelimittypes.ModuleName,
@@ -1085,7 +1059,6 @@ func NewChainApp(
 		icatypes.ModuleName,
 		ibcfeetypes.ModuleName,
 		wasmtypes.ModuleName, // wasm after ibc transfer
-		tokenfactorytypes.ModuleName,
 		packetforwardtypes.ModuleName,
 		wasmlctypes.ModuleName,
 		ratelimittypes.ModuleName,
@@ -1525,7 +1498,6 @@ func initParamsKeeper(appCodec codec.BinaryCodec, legacyAmino *codec.LegacyAmino
 	paramsKeeper.Subspace(icahosttypes.SubModuleName).WithKeyTable(icahosttypes.ParamKeyTable())
 
 	paramsKeeper.Subspace(wasmtypes.ModuleName)
-	paramsKeeper.Subspace(tokenfactorytypes.ModuleName)
 	paramsKeeper.Subspace(packetforwardtypes.ModuleName)
 	paramsKeeper.Subspace(ratelimittypes.ModuleName)
 

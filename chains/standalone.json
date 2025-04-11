@@ -2,7 +2,7 @@
     "chains": [
         {
             "name": "qcore",
-            "chain_id": "localchain_9000-1",
+            "chain_id": "localchain_90001-1",
             "docker_image": {
                 "repository": "qcore",
                 "version": "local",

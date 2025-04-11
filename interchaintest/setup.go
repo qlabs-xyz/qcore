@@ -31,7 +31,7 @@ var (
 	Denom = "qnt"
 	Name  = "qcore"
 
-	ChainID = "localchain_9000-1"
+	ChainID = "localchain_90001-1"
 	Binary  = "qcored"
 	Bech32  = "q"
 	ibcPath = "ibc-path"
