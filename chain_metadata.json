@@ -1,12 +1,12 @@
 {
   "display": {
-    "name": "qcore",
-    "description": "qcore is an Interchain blockchain.",
+    "name": "outbe-node",
+    "description": "outbe-node is an Interchain blockchain.",
     "links": {
       "logo": "https://raw.githubusercontent.com/cosmos/chain-registry/master/cosmoshub/images/atom.png",
       "discord": "https://discord.gg/your-discord",
       "email": "example@example.com",
-      "github": "https://github.com/qlabs-xyz/qcore",
+      "github": "https://github.com/outbe/outbe-node",
       "telegram": "https://t.me/example",
       "twitter": "https://twitter.com/example_account",
       "website": "https://example.com",

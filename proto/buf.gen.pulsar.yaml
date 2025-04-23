@@ -2,7 +2,7 @@ version: v1
 managed:
   enabled: true
   go_package_prefix:
-    default: github.com/qlabs-xyz/qcore/api
+    default: github.com/outbe/outbe-node/api
     except:
       - buf.build/googleapis/googleapis
       - buf.build/cosmos/gogo-proto

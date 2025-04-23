@@ -28,19 +28,19 @@ var (
 	VotingPeriod     = "15s"
 	MaxDepositPeriod = "10s"
 
-	Denom = "qnt"
-	Name  = "qcore"
+	Denom = "outbe"
+	Name  = "outbe-node"
 
 	ChainID = "localchain_90001-1"
-	Binary  = "qcored"
-	Bech32  = "q"
+	Binary  = "outbe-noded"
+	Bech32  = "outbe"
 	ibcPath = "ibc-path"
 
 	NumberVals         = 1
 	NumberFullNodes    = 0
 	GenesisFundsAmount = sdkmath.NewInt(1000_000000) // 1k tokens
 
-	ChainImage = ibc.NewDockerImage("qcore", "local", "1025:1025")
+	ChainImage = ibc.NewDockerImage("outbe-node", "local", "1025:1025")
 
 	Precompiles = []string{"0x0000000000000000000000000000000000000100", "0x0000000000000000000000000000000000000400", "0x0000000000000000000000000000000000000800", "0x0000000000000000000000000000000000000801", "0x0000000000000000000000000000000000000802", "0x0000000000000000000000000000000000000803", "0x0000000000000000000000000000000000000804", "0x0000000000000000000000000000000000000805"}
 

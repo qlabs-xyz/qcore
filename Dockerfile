@@ -27,17 +27,17 @@ RUN set -eux; \
 COPY . /code
 
 # force it to use static lib (from above) not standard libgo_cosmwasm.so file
-# then log output of file /code/bin/qcored
+# then log output of file /code/bin/outbe-noded
 # then ensure static linking
 RUN LEDGER_ENABLED=false BUILD_TAGS=muslc LINK_STATICALLY=true make build \
-  && file /code/build/qcored \
+  && file /code/build/outbe-noded \
   && echo "Ensuring binary is statically linked ..." \
-  && (file /code/build/qcored | grep "statically linked")
+  && (file /code/build/outbe-noded | grep "statically linked")
 
 # --------------------------------------------------------
 FROM alpine:3.21
 
-COPY --from=build-env /code/build/qcored /usr/bin/qcored
+COPY --from=build-env /code/build/outbe-noded /usr/bin/outbe-noded
 
 RUN apk add --no-cache ca-certificates curl make bash jq sed
 
@@ -46,4 +46,4 @@ WORKDIR /opt
 # rest server, tendermint p2p, tendermint rpc
 EXPOSE 1317 26656 26657 8545 8546
 
-CMD ["/usr/bin/qcored", "version"]
+CMD ["/usr/bin/outbe-noded", "version"]

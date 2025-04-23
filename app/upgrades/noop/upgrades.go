@@ -8,7 +8,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/types/module"
 
-	"github.com/qlabs-xyz/qcore/app/upgrades"
+	"github.com/outbe/outbe-node/app/upgrades"
 )
 
 // NewUpgrade constructor
