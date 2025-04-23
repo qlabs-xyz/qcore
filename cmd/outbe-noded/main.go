@@ -6,7 +6,7 @@ import (
 
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/qlabs-xyz/qcore/app"
+	"github.com/outbe/outbe-node/app"
 )
 
 func main() {

@@ -21,8 +21,8 @@ import (
 
 	wasmkeeper "github.com/CosmWasm/wasmd/x/wasm/keeper"
 	evmoskeyring "github.com/cosmos/evm/crypto/keyring"
-	"github.com/qlabs-xyz/qcore/app"
-	"github.com/qlabs-xyz/qcore/app/params"
+	"github.com/outbe/outbe-node/app"
+	"github.com/outbe/outbe-node/app/params"
 )
 
 // NewRootCmd creates a new root command for chain app. It is called once in the

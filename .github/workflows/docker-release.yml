@@ -69,6 +69,6 @@ jobs:
           build-target: make install
           local: true
           binaries: |
-            - /go/bin/qcored
+            - /go/bin/outbe-noded
           build-env: |
             - BUILD_TAGS=muslc

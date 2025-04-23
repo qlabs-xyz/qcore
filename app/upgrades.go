@@ -5,8 +5,8 @@ import (
 
 	upgradetypes "cosmossdk.io/x/upgrade/types"
 
-	"github.com/qlabs-xyz/qcore/app/upgrades"
-	"github.com/qlabs-xyz/qcore/app/upgrades/noop"
+	"github.com/outbe/outbe-node/app/upgrades"
+	"github.com/outbe/outbe-node/app/upgrades/noop"
 )
 
 // Upgrades list of chain upgrades

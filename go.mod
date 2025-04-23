@@ -1,4 +1,4 @@
-module github.com/qlabs-xyz/qcore
+module github.com/outbe/outbe-node
 
 go 1.23.6
 
@@ -8,7 +8,7 @@ toolchain go1.23.7
 replace (
 	cosmossdk.io/core => cosmossdk.io/core v0.11.0
 	cosmossdk.io/store => github.com/evmos/cosmos-sdk/store v0.0.0-20240718141609-414cbd051fbe
-	github.com/CosmWasm/wasmd => github.com/qlabs-xyz/wasmd v0.0.0-20250411064130-7738a72dd549
+	github.com/CosmWasm/wasmd => github.com/outbe/wasmd v0.0.0-20250411064130-7738a72dd549
 	github.com/cosmos/cosmos-sdk => github.com/strangelove-ventures/cosmos-sdk v0.0.0-20250317212103-0767f8c5b1e5
 	github.com/cosmos/evm => github.com/strangelove-ventures/cosmos-evm v0.1.5
 	github.com/ethereum/go-ethereum => github.com/evmos/go-ethereum v1.10.26-evmos-rc4

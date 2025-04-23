@@ -2,8 +2,8 @@
 # Run this script to quickly install, setup, and run the current version of the network without docker.
 #
 # Examples:
-# CHAIN_ID="localchain_90001-1" HOME_DIR="~/.qcore" BLOCK_TIME="1000ms" CLEAN=true sh scripts/test_node.sh
-# CHAIN_ID="localchain_90001-2" HOME_DIR="~/.qcore" CLEAN=true RPC=36657 REST=2317 PROFF=6061 P2P=36656 GRPC=8090 GRPC_WEB=8091 ROSETTA=8081 BLOCK_TIME="500ms" sh scripts/test_node.sh
+# CHAIN_ID="localchain_90001-1" HOME_DIR="~/.outbe-node" BLOCK_TIME="1000ms" CLEAN=true sh scripts/test_node.sh
+# CHAIN_ID="localchain_90001-2" HOME_DIR="~/.outbe-node" CLEAN=true RPC=36657 REST=2317 PROFF=6061 P2P=36656 GRPC=8090 GRPC_WEB=8091 ROSETTA=8081 BLOCK_TIME="500ms" sh scripts/test_node.sh
 
 set -eu
 
@@ -14,9 +14,9 @@ export CHAIN_ID=${CHAIN_ID:-"localchain_90001-1"}
 export MONIKER="localvalidator"
 export KEYALGO="eth_secp256k1"
 export KEYRING=${KEYRING:-"test"}
-export HOME_DIR=$(eval echo "${HOME_DIR:-"~/.qcore"}")
-export BINARY=${BINARY:-qcored}
-export DENOM=${DENOM:-qnt}
+export HOME_DIR=$(eval echo "${HOME_DIR:-"~/.outbe-node"}")
+export BINARY=${BINARY:-outbe-noded}
+export DENOM=${DENOM:-outbe}
 
 export CLEAN=${CLEAN:-"false"}
 export RPC=${RPC:-"26657"}
@@ -68,9 +68,9 @@ from_scratch () {
     echo $mnemonic | $BINARY keys add $key --keyring-backend $KEYRING --algo $KEYALGO --home $HOME_DIR --recover
   }
 
-  # q140fehngcrxvhdt84x729p3f0qmkmea8nlvcx49
+  # outbe140fehngcrxvhdt84x729p3f0qmkmea8nlvcx49
   add_key $KEY "decorate bright ozone fork gallery riot bus exhaust worth way bone indoor calm squirrel merry zero scheme cotton until shop any excess stage laundry"
-  # q1r6yue0vuyj9m7xw78npspt9drq2tmtvgn378xw
+  # outbe1r6yue0vuyj9m7xw78npspt9drq2tmtvgn378xw
   add_key $KEY2 "wealth flavor believe regret funny network recall kiss grape useless pepper cram hint member few certain unveil rather brick bargain curious require crowd raise"
 
   $BINARY init $MONIKER --chain-id $CHAIN_ID --default-denom $DENOM --home $HOME_DIR
