@@ -171,6 +171,10 @@ import (
 	evmkeeper "github.com/cosmos/evm/x/vm/keeper"
 	evmtypes "github.com/cosmos/evm/x/vm/types"
 	chainante "github.com/qlabs-xyz/qcore/app/ante"
+
+	poolmodule "github.com/qlabs-xyz/qcore/x/pool"
+	poolkeeper "github.com/qlabs-xyz/qcore/x/pool/keeper"
+	pooltypes "github.com/qlabs-xyz/qcore/x/pool/types"
 )
 
 const (
@@ -301,6 +305,8 @@ type ChainApp struct {
 	EVMKeeper           *evmkeeper.Keeper
 	Erc20Keeper         erc20keeper.Keeper
 
+	PoolKeeper poolkeeper.Keeper
+
 	ScopedIBCKeeper           capabilitykeeper.ScopedKeeper
 	ScopedICAHostKeeper       capabilitykeeper.ScopedKeeper
 	ScopedICAControllerKeeper capabilitykeeper.ScopedKeeper
@@ -416,6 +422,7 @@ func NewChainApp(
 		evmtypes.StoreKey,
 		feemarkettypes.StoreKey,
 		erc20types.StoreKey,
+		pooltypes.StoreKey,
 	)
 
 	tkeys := storetypes.NewTransientStoreKeys(
@@ -644,6 +651,16 @@ func NewChainApp(
 		govtypes.NewMultiGovHooks(
 		// register the governance hooks
 		),
+	)
+
+	app.PoolKeeper = poolkeeper.NewKeeper(
+		appCodec,
+		runtime.NewKVStoreService(keys[pooltypes.StoreKey]),
+
+		app.StakingKeeper,
+		app.AccountKeeper,
+		app.BankKeeper,
+		authtypes.FeeCollectorName,
 	)
 
 	app.NFTKeeper = nftkeeper.NewKeeper(
@@ -936,7 +953,7 @@ func NewChainApp(
 			app.StakingKeeper,
 			app.AccountKeeper, app.BankKeeper, app.MsgServiceRouter(), app.GetSubspace(wasmtypes.ModuleName),
 		),
-
+		poolmodule.NewAppModule(appCodec, app.PoolKeeper, app.AccountKeeper, app.BankKeeper),
 		ibc.NewAppModule(app.IBCKeeper),
 		transfer.NewAppModule(app.TransferKeeper),
 		ibcfee.NewAppModule(app.IBCFeeKeeper),
@@ -995,6 +1012,7 @@ func NewChainApp(
 		packetforwardtypes.ModuleName,
 		wasmlctypes.ModuleName,
 		ratelimittypes.ModuleName,
+		pooltypes.ModuleName,
 	)
 
 	app.ModuleManager.SetOrderEndBlockers(
@@ -1015,6 +1033,7 @@ func NewChainApp(
 		packetforwardtypes.ModuleName,
 		wasmlctypes.ModuleName,
 		ratelimittypes.ModuleName,
+		pooltypes.ModuleName,
 	)
 
 	// NOTE: The genutils module must occur after staking so that pools are
@@ -1062,6 +1081,7 @@ func NewChainApp(
 		packetforwardtypes.ModuleName,
 		wasmlctypes.ModuleName,
 		ratelimittypes.ModuleName,
+		pooltypes.ModuleName,
 	}
 	app.ModuleManager.SetOrderInitGenesis(genesisModuleOrder...)
 	app.ModuleManager.SetOrderExportGenesis(genesisModuleOrder...)
@@ -1504,6 +1524,8 @@ func initParamsKeeper(appCodec codec.BinaryCodec, legacyAmino *codec.LegacyAmino
 	paramsKeeper.Subspace(evmtypes.ModuleName)
 	paramsKeeper.Subspace(feemarkettypes.ModuleName)
 	paramsKeeper.Subspace(erc20types.ModuleName)
+
+	paramsKeeper.Subspace(pooltypes.ModuleName)
 
 	return paramsKeeper
 }
