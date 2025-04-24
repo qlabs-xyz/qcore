@@ -205,7 +205,7 @@ proto-gen:
 	@echo "Generating Protobuf files"
 	@$(protoImage) sh ./scripts/protocgen.sh
 # generate the stubs for the proto files from the proto directory
-	@spawn stub-gen
+# @spawn stub-gen
 	@go mod tidy
 
 proto-format:
@@ -310,6 +310,7 @@ testnet: setup-testnet
 	spawn local-ic start testnet
 
 sh-testnet: mod-tidy
+	rm -f $(GOPATH)/bin/qcored
 	CHAIN_ID="localchain_90001-1" BLOCK_TIME="1000ms" CLEAN=true sh scripts/test_node.sh
 
 .PHONY: setup-testnet set-testnet-configs testnet testnet-basic sh-testnet

@@ -1,0 +1,39 @@
+syntax = "proto3";
+package qcore.pool;
+
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+
+import "cosmos/base/query/v1beta1/pagination.proto";
+
+// this line is used by starport scaffolding # 1
+
+option go_package = "github.com/qlabs-xyz/qcore/x/pool/types";
+
+// Query defines the gRPC querier service.
+service Query {
+
+  rpc GetBlockEmission(QueryBlockEmissionRequest) returns (QueryBlockEmissionResponse) {
+    option (google.api.http).get               = "/qcore/pool/emission/{block_number}";
+  }
+
+  rpc GetTotalSupply(QueryTotalSupplyRequest) returns (QueryTotalSupplyResponse) {
+    option (google.api.http).get               = "/qcore/pool/totalsupply";
+  }
+
+}
+
+message QueryBlockEmissionRequest {
+  int64 block_number = 1;
+}
+
+message QueryBlockEmissionResponse {
+  string tokens = 1;
+}
+
+message QueryTotalSupplyRequest {
+}
+
+message QueryTotalSupplyResponse {
+  string total_supply = 1;
+}

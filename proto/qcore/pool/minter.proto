@@ -1,0 +1,18 @@
+syntax = "proto3";
+package qcore.pool;
+import "gogoproto/gogo.proto";
+
+
+option go_package = "github.com/qlabs-xyz/qcore/x/pool/types";
+
+message Minter {
+  string provisions = 1;
+  uint64 reduction_period_in_epochs = 2;
+  string minter_type = 3;
+  string total_minted = 4;
+  uint64 minting_rewards_distribution_start_epoch = 5;
+  string minting_interval = 6;
+  string module_account = 7;
+  string minter_cap = 8;
+  string epoch_identifier = 9;
+}
