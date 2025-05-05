@@ -1,0 +1,15 @@
+[book]
+language = "en"
+multilingual = false
+src = "docs"
+title = "OutBe Blockchain"
+
+[output.html]
+
+# [output.linkcheck]
+# follow-web-links = true
+# traverse-parent-directories = false
+# exclude = [ "google\\.com" ]
+# user-agent = "mdbook-linkcheck-0.4.0"
+# cache-timeout = 43200
+# warning-policy = "warn"
