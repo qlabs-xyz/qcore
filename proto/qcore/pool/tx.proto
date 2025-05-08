@@ -11,5 +11,22 @@ service Msg {
 
   option (cosmos.msg.v1.service) = true;
 
+     // Msg defines the Msg service.
+   rpc MintTribute(MsgMintTributeRequest) returns (MsgMintTributeResponse);
+
 }
+
+// Msg defines the Msg service.
+message MsgMintTributeRequest {
+  option (amino.name) = "pool/MsgMintTribute";
+  option (cosmos.msg.v1.signer) = "creator";
+
+  string creator = 1;
+  string contract_address = 2;
+  uint64 mint_amount = 3;
+  string receipt_address = 4;
+}
+
+// Msg defines the Msg service.
+message MsgMintTributeResponse {}
 
