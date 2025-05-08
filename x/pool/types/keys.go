@@ -22,8 +22,8 @@ const (
 var (
 	PoolKey        = []byte{0x01}
 	TotalSupplyKey = []byte{0x02}
-	// AuctionKey    = []byte{0x03}
-	// RedemptionKey = []byte{0x04}
+	TributeKey     = []byte{0x03}
+	MintKey        = []byte{0x04}
 	// WhitelistKey  = []byte{0x12}
 	//    = []byte{0x13}
 	//    = []byte{0x14}
@@ -38,6 +38,14 @@ var (
 
 func GetPoolKey(id string) []byte {
 	return append(PoolKey, address.MustLengthPrefix([]byte(id))...)
+}
+
+func GetTributeKey(id string) []byte {
+	return append(TributeKey, address.MustLengthPrefix([]byte(id))...)
+}
+
+func GetMintKey(id string) []byte {
+	return append(MintKey, address.MustLengthPrefix([]byte(id))...)
 }
 
 func GetTotalSupplyKey(id string) []byte {
