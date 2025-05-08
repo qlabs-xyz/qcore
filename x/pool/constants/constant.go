@@ -9,8 +9,8 @@ const (
 // Constants for fixed token emission
 const (
 	TransitionBlockNumber = 17472000
-	APR                   = "0.02"
+	APR                   = "0.02" // Annual inflation rate
 	DaysPerYear           = "365"
-	BlocksPerDay          = "17280"
+	BlocksPerDay          = "17280" // Blocks per day
 	// TotalSupply           = "10000000"
 )
