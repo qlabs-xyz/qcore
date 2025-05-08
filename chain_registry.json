@@ -6,7 +6,7 @@
   "website": "https://example.com",
   "network_type": "testnet",
   "pretty_name": "Qcore",
-  "chain_id": "localchain-1",
+  "chain_id": "localchain_90001-1",
   "bech32_prefix": "q",
   "daemon_name": "qcored",
   "node_home": "$HOME/.qcore",

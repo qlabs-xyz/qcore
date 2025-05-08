@@ -46,7 +46,7 @@ import (
 	wasmkeeper "github.com/CosmWasm/wasmd/x/wasm/keeper"
 )
 
-const chainID = "testing"
+const chainID = "localchain_90001-1"
 
 // SetupOptions defines arguments that are passed into `ChainApp` constructor.
 type SetupOptions struct {
@@ -226,7 +226,7 @@ func SetupWithGenesisValSet(
 
 // SetupWithEmptyStore set up a chain app instance with empty DB
 func SetupWithEmptyStore(t testing.TB) *ChainApp {
-	app, _ := setup(t, "testing", false, 0)
+	app, _ := setup(t, "localchain_90001-1", false, 0)
 	return app
 }
 
