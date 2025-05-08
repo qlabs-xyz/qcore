@@ -1,11 +1,11 @@
 package params
 
 const (
-	AccountAddressPrefix = "gem"
+	AccountAddressPrefix = "qnt"
 	Name                 = "qcore"
 
 	// BondDenom defines the native staking token denomination.
-	BondDenom = "gem"
+	BondDenom = "qnt"
 
 	MinDeposit = 10000000
 
