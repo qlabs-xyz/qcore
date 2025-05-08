@@ -20,8 +20,7 @@ func GetTxCmd() *cobra.Command {
 		RunE:                       client.ValidateCmd,
 	}
 
-	// cmd.AddCommand(CmdMintRedeemedOptionNFT())
-	// cmd.AddCommand(CmdAddContractToWhitelist())
+	cmd.AddCommand(CmdMintTribute())
 
 	return cmd
 }
