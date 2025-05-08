@@ -175,6 +175,8 @@ import (
 	poolmodule "github.com/qlabs-xyz/qcore/x/pool"
 	poolkeeper "github.com/qlabs-xyz/qcore/x/pool/keeper"
 	pooltypes "github.com/qlabs-xyz/qcore/x/pool/types"
+
+	gwasm "github.com/qlabs-xyz/qcore/wasmbinding"
 )
 
 const (
@@ -250,6 +252,7 @@ var maccPerms = map[string][]string{
 	evmtypes.ModuleName:         {authtypes.Minter, authtypes.Burner},
 	feemarkettypes.ModuleName:   nil,
 	erc20types.ModuleName:       {authtypes.Minter, authtypes.Burner},
+	//tokenfactorytypes.ModuleName: {authtypes.Minter, authtypes.Burner},
 }
 
 var (
@@ -817,6 +820,8 @@ func NewChainApp(
 	if err != nil {
 		panic(fmt.Sprintf("error while reading wasm config: %s", err))
 	}
+
+	wasmOpts = append(wasmOpts, gwasm.RegisterCustomPlugins(nil, &app.PoolKeeper)...)
 
 	// The last arguments can contain custom message handlers, and custom query handlers,
 	// if we want to allow any custom callbacks
