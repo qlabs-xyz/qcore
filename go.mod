@@ -58,6 +58,7 @@ require (
 	github.com/cosmos/ibc-go/modules/light-clients/08-wasm v0.4.2-0.20240730185033-ccd4dc278e72
 	github.com/cosmos/ibc-go/v8 v8.7.0
 	github.com/ethereum/go-ethereum v1.15.3
+	github.com/gogo/status v1.1.0
 	github.com/golang/protobuf v1.5.4
 	github.com/grpc-ecosystem/grpc-gateway v1.16.0
 	github.com/prometheus/client_golang v1.20.5
@@ -69,6 +70,8 @@ require (
 	google.golang.org/grpc v1.70.0
 	google.golang.org/protobuf v1.36.4
 )
+
+require github.com/opencontainers/image-spec v1.1.0-rc5 // indirect
 
 require (
 	cloud.google.com/go v0.115.0 // indirect
