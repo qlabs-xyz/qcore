@@ -27,8 +27,8 @@ var (
 	_ module.HasServices  = AppModule{}
 	_ appmodule.AppModule = AppModule{}
 
-	_ module.HasGenesis = AppModule{}
-	// _ module.HasServices = AppModule{}
+	_ module.HasGenesis  = AppModule{}
+	_ module.HasServices = AppModule{}
 )
 
 // ----------------------------------------------------------------------------
@@ -118,7 +118,7 @@ func (am AppModule) IsAppModule() {
 func (AppModule) ConsensusVersion() uint64 { return 3 }
 
 func (am AppModule) RegisterServices(cfg module.Configurator) {
-	// types.RegisterMsgServer(cfg.MsgServer(), keeper.NewMsgServerImpl(am.keeper))
+	types.RegisterMsgServer(cfg.MsgServer(), keeper.NewMsgServerImpl(am.keeper))
 	types.RegisterQueryServer(cfg.QueryServer(), keeper.NewQueryServerImpl(am.keeper))
 }
 
@@ -140,10 +140,6 @@ func (am AppModule) ExportGenesis(ctx sdk.Context, cdc codec.JSONCodec) json.Raw
 	return cdc.MustMarshalJSON(genState)
 }
 
-// func (am AppModule) WeightedOperations(simState module.SimulationState) []simtypes.WeightedOperation {
-// 	return simulation.WeightedOperations(simState.AppParams, am.keeper)
-// }
-
 func (b AppModuleBasic) ValidateGenesis(marshaler codec.JSONCodec, _ client.TxEncodingConfig, message json.RawMessage) error {
 	var genesis types.GenesisState
 	err := marshaler.UnmarshalJSON(message, &genesis)
@@ -151,4 +147,9 @@ func (b AppModuleBasic) ValidateGenesis(marshaler codec.JSONCodec, _ client.TxEn
 		return err
 	}
 	return ValidateGenesis(&genesis)
+}
+
+func (am AppModule) BeginBlock(ctx context.Context) error {
+	sdkCtx := sdk.UnwrapSDKContext(ctx)
+	return am.keeper.BeginBlocker(sdkCtx)
 }
