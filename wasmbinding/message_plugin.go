@@ -41,7 +41,7 @@ func (m *CustomMessenger) DispatchMsg(ctx sdk.Context, contractAddr sdk.AccAddre
 
 	// only handle the happy path where this is really minting ...
 	// leave everything else for the wrapped version
-	var redumptionMsg bindings.QCoreMsg
+	var redumptionMsg bindings.QcoreMsg
 	if err := json.Unmarshal(msg.Custom, &redumptionMsg); err != nil {
 		return nil, nil, nil, errorsmod.Wrap(err, "[DispatchMsg][Unmarshal failed to unmarshal the message")
 	}
@@ -75,7 +75,7 @@ func PerformMint(f *poolkeeper.Keeper, b *bankkeeper.BaseKeeper, ctx sdk.Context
 		return errorsmod.Wrap(err, "[PerformMint] failed to parse redumption mint amount.")
 	}
 
-	msg := &pooltypes.MsgMintTributeRequest{
+	msg := &pooltypes.MsgMintTribute{
 		Creator:         bindingMsg.Creator,
 		ContractAddress: bindingMsg.Creator,
 		MintAmount:      mintAmount,

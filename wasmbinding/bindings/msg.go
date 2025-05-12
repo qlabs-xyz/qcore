@@ -1,6 +1,6 @@
 package bindings
 
-type QCoreMsg struct {
+type QcoreMsg struct {
 	MsgMintTribute *MsgMintTribute `json:"msg_mint_tribute,omitempty"`
 }
 
