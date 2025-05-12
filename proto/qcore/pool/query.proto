@@ -6,6 +6,11 @@ import "google/api/annotations.proto";
 
 import "cosmos/base/query/v1beta1/pagination.proto";
 
+import "qcore/pool/emission.proto";
+import "qcore/pool/minted.proto";
+import "qcore/pool/supply.proto";
+import "qcore/pool/tribute.proto";
+
 // this line is used by starport scaffolding # 1
 
 option go_package = "github.com/qlabs-xyz/qcore/x/pool/types";
@@ -17,8 +22,20 @@ service Query {
     option (google.api.http).get               = "/qcore/pool/emission/{block_number}";
   }
 
+  rpc GetEmission(QueryEmissionRequest) returns (QueryEmissionResponse) {
+    option (google.api.http).get               = "/qcore/pool/emission";
+  }
+
   rpc GetTotalSupply(QueryTotalSupplyRequest) returns (QueryTotalSupplyResponse) {
     option (google.api.http).get               = "/qcore/pool/totalsupply";
+  }
+
+  rpc GetTotalMinted(QueryTotalMintedRequest) returns (QueryTotalMintedResponse) {
+    option (google.api.http).get               = "/qcore/pool/minted";
+  }
+
+  rpc GetTribute(QueryTributeRequest) returns (QueryTributeResponse) {
+    option (google.api.http).get               = "/qcore/pool/tribute";
   }
 
 }
@@ -31,9 +48,32 @@ message QueryBlockEmissionResponse {
   string tokens = 1;
 }
 
+message QueryEmissionRequest {
+}
+
+message QueryEmissionResponse {
+  Emission emission = 1;
+}
+
 message QueryTotalSupplyRequest {
 }
 
 message QueryTotalSupplyResponse {
-  string total_supply = 1;
+  Supply total_supply = 1;
+}
+
+message QueryTotalMintedRequest {
+}
+
+message QueryTotalMintedResponse {
+  Minted total_minted = 1;
+}
+
+message QueryTributeRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryTributeResponse {
+	repeated Tribute tribute = 1  [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }

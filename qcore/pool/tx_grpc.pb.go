@@ -27,7 +27,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type MsgClient interface {
 	// Msg defines the Msg service.
-	MintTribute(ctx context.Context, in *MsgMintTributeRequest, opts ...grpc.CallOption) (*MsgMintTributeResponse, error)
+	MintTribute(ctx context.Context, in *MsgMintTribute, opts ...grpc.CallOption) (*MsgMintTributeResponse, error)
 }
 
 type msgClient struct {
@@ -38,7 +38,7 @@ func NewMsgClient(cc grpc.ClientConnInterface) MsgClient {
 	return &msgClient{cc}
 }
 
-func (c *msgClient) MintTribute(ctx context.Context, in *MsgMintTributeRequest, opts ...grpc.CallOption) (*MsgMintTributeResponse, error) {
+func (c *msgClient) MintTribute(ctx context.Context, in *MsgMintTribute, opts ...grpc.CallOption) (*MsgMintTributeResponse, error) {
 	out := new(MsgMintTributeResponse)
 	err := c.cc.Invoke(ctx, Msg_MintTribute_FullMethodName, in, out, opts...)
 	if err != nil {
@@ -52,7 +52,7 @@ func (c *msgClient) MintTribute(ctx context.Context, in *MsgMintTributeRequest, 
 // for forward compatibility
 type MsgServer interface {
 	// Msg defines the Msg service.
-	MintTribute(context.Context, *MsgMintTributeRequest) (*MsgMintTributeResponse, error)
+	MintTribute(context.Context, *MsgMintTribute) (*MsgMintTributeResponse, error)
 	mustEmbedUnimplementedMsgServer()
 }
 
@@ -60,7 +60,7 @@ type MsgServer interface {
 type UnimplementedMsgServer struct {
 }
 
-func (UnimplementedMsgServer) MintTribute(context.Context, *MsgMintTributeRequest) (*MsgMintTributeResponse, error) {
+func (UnimplementedMsgServer) MintTribute(context.Context, *MsgMintTribute) (*MsgMintTributeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MintTribute not implemented")
 }
 func (UnimplementedMsgServer) mustEmbedUnimplementedMsgServer() {}
@@ -77,7 +77,7 @@ func RegisterMsgServer(s grpc.ServiceRegistrar, srv MsgServer) {
 }
 
 func _Msg_MintTribute_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgMintTributeRequest)
+	in := new(MsgMintTribute)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -89,7 +89,7 @@ func _Msg_MintTribute_Handler(srv interface{}, ctx context.Context, dec func(int
 		FullMethod: Msg_MintTribute_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).MintTribute(ctx, req.(*MsgMintTributeRequest))
+		return srv.(MsgServer).MintTribute(ctx, req.(*MsgMintTribute))
 	}
 	return interceptor(ctx, in, info, handler)
 }

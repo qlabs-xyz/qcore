@@ -3,10 +3,12 @@ package qcore.pool;
 
 option go_package = "github.com/qlabs-xyz/qcore/x/pool/types";
 
+
 // Message to set the minting for tribute
 message Tribute{
-  string creator = 1; // creator address
-  string contract_address = 2; // contract address
-  string recipient_address = 3; // receipt address
-  uint64 amount = 4;
+  string id = 1;
+  string creator = 2; // creator address
+  string contract_address = 3; // contract address
+  string recipient_address = 4; // receipt address
+  uint64 amount = 5;
 }

@@ -12,12 +12,12 @@ service Msg {
   option (cosmos.msg.v1.service) = true;
 
      // Msg defines the Msg service.
-   rpc MintTribute(MsgMintTributeRequest) returns (MsgMintTributeResponse);
+   rpc MintTribute(MsgMintTribute) returns (MsgMintTributeResponse);
 
 }
 
 // Msg defines the Msg service.
-message MsgMintTributeRequest {
+message MsgMintTribute {
   option (amino.name) = "pool/MsgMintTribute";
   option (cosmos.msg.v1.signer) = "creator";
 

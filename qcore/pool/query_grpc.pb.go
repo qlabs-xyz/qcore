@@ -20,7 +20,10 @@ const _ = grpc.SupportPackageIsVersion7
 
 const (
 	Query_GetBlockEmission_FullMethodName = "/qcore.pool.Query/GetBlockEmission"
+	Query_GetEmission_FullMethodName      = "/qcore.pool.Query/GetEmission"
 	Query_GetTotalSupply_FullMethodName   = "/qcore.pool.Query/GetTotalSupply"
+	Query_GetTotalMinted_FullMethodName   = "/qcore.pool.Query/GetTotalMinted"
+	Query_GetTribute_FullMethodName       = "/qcore.pool.Query/GetTribute"
 )
 
 // QueryClient is the client API for Query service.
@@ -28,7 +31,10 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type QueryClient interface {
 	GetBlockEmission(ctx context.Context, in *QueryBlockEmissionRequest, opts ...grpc.CallOption) (*QueryBlockEmissionResponse, error)
+	GetEmission(ctx context.Context, in *QueryEmissionRequest, opts ...grpc.CallOption) (*QueryEmissionResponse, error)
 	GetTotalSupply(ctx context.Context, in *QueryTotalSupplyRequest, opts ...grpc.CallOption) (*QueryTotalSupplyResponse, error)
+	GetTotalMinted(ctx context.Context, in *QueryTotalMintedRequest, opts ...grpc.CallOption) (*QueryTotalMintedResponse, error)
+	GetTribute(ctx context.Context, in *QueryTributeRequest, opts ...grpc.CallOption) (*QueryTributeResponse, error)
 }
 
 type queryClient struct {
@@ -48,9 +54,36 @@ func (c *queryClient) GetBlockEmission(ctx context.Context, in *QueryBlockEmissi
 	return out, nil
 }
 
+func (c *queryClient) GetEmission(ctx context.Context, in *QueryEmissionRequest, opts ...grpc.CallOption) (*QueryEmissionResponse, error) {
+	out := new(QueryEmissionResponse)
+	err := c.cc.Invoke(ctx, Query_GetEmission_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *queryClient) GetTotalSupply(ctx context.Context, in *QueryTotalSupplyRequest, opts ...grpc.CallOption) (*QueryTotalSupplyResponse, error) {
 	out := new(QueryTotalSupplyResponse)
 	err := c.cc.Invoke(ctx, Query_GetTotalSupply_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) GetTotalMinted(ctx context.Context, in *QueryTotalMintedRequest, opts ...grpc.CallOption) (*QueryTotalMintedResponse, error) {
+	out := new(QueryTotalMintedResponse)
+	err := c.cc.Invoke(ctx, Query_GetTotalMinted_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) GetTribute(ctx context.Context, in *QueryTributeRequest, opts ...grpc.CallOption) (*QueryTributeResponse, error) {
+	out := new(QueryTributeResponse)
+	err := c.cc.Invoke(ctx, Query_GetTribute_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -62,7 +95,10 @@ func (c *queryClient) GetTotalSupply(ctx context.Context, in *QueryTotalSupplyRe
 // for forward compatibility
 type QueryServer interface {
 	GetBlockEmission(context.Context, *QueryBlockEmissionRequest) (*QueryBlockEmissionResponse, error)
+	GetEmission(context.Context, *QueryEmissionRequest) (*QueryEmissionResponse, error)
 	GetTotalSupply(context.Context, *QueryTotalSupplyRequest) (*QueryTotalSupplyResponse, error)
+	GetTotalMinted(context.Context, *QueryTotalMintedRequest) (*QueryTotalMintedResponse, error)
+	GetTribute(context.Context, *QueryTributeRequest) (*QueryTributeResponse, error)
 	mustEmbedUnimplementedQueryServer()
 }
 
@@ -73,8 +109,17 @@ type UnimplementedQueryServer struct {
 func (UnimplementedQueryServer) GetBlockEmission(context.Context, *QueryBlockEmissionRequest) (*QueryBlockEmissionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetBlockEmission not implemented")
 }
+func (UnimplementedQueryServer) GetEmission(context.Context, *QueryEmissionRequest) (*QueryEmissionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetEmission not implemented")
+}
 func (UnimplementedQueryServer) GetTotalSupply(context.Context, *QueryTotalSupplyRequest) (*QueryTotalSupplyResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTotalSupply not implemented")
+}
+func (UnimplementedQueryServer) GetTotalMinted(context.Context, *QueryTotalMintedRequest) (*QueryTotalMintedResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTotalMinted not implemented")
+}
+func (UnimplementedQueryServer) GetTribute(context.Context, *QueryTributeRequest) (*QueryTributeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTribute not implemented")
 }
 func (UnimplementedQueryServer) mustEmbedUnimplementedQueryServer() {}
 
@@ -107,6 +152,24 @@ func _Query_GetBlockEmission_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_GetEmission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryEmissionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).GetEmission(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_GetEmission_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).GetEmission(ctx, req.(*QueryEmissionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Query_GetTotalSupply_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(QueryTotalSupplyRequest)
 	if err := dec(in); err != nil {
@@ -125,6 +188,42 @@ func _Query_GetTotalSupply_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_GetTotalMinted_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryTotalMintedRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).GetTotalMinted(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_GetTotalMinted_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).GetTotalMinted(ctx, req.(*QueryTotalMintedRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_GetTribute_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryTributeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).GetTribute(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_GetTribute_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).GetTribute(ctx, req.(*QueryTributeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Query_ServiceDesc is the grpc.ServiceDesc for Query service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -137,8 +236,20 @@ var Query_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Query_GetBlockEmission_Handler,
 		},
 		{
+			MethodName: "GetEmission",
+			Handler:    _Query_GetEmission_Handler,
+		},
+		{
 			MethodName: "GetTotalSupply",
 			Handler:    _Query_GetTotalSupply_Handler,
+		},
+		{
+			MethodName: "GetTotalMinted",
+			Handler:    _Query_GetTotalMinted_Handler,
+		},
+		{
+			MethodName: "GetTribute",
+			Handler:    _Query_GetTribute_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

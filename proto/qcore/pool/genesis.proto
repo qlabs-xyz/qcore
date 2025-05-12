@@ -6,8 +6,14 @@ import "gogoproto/gogo.proto";
 
 option go_package = "github.com/qlabs-xyz/qcore/x/pool/types";
 
+import "qcore/pool/supply.proto";
+import "qcore/pool/tribute.proto";
+import "qcore/pool/emission.proto";
 
-// GenesisState defines the epoch module's genesis state.
 message GenesisState {
+
+    repeated Supply SupplyList = 1 [(gogoproto.nullable) = false];
+    repeated Tribute TributeList = 2 [(gogoproto.nullable) = false];
+    repeated Emission EmissionList = 3 [(gogoproto.nullable) = false];
   
 }
