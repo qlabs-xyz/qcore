@@ -17,9 +17,9 @@ RUN set -eux; \
     export ARCH=$(uname -m); \
     WASM_VERSION=$(go list -m all | grep github.com/CosmWasm/wasmvm || true); \
     if [ ! -z "${WASM_VERSION}" ]; then \
-      WASMVM_REPO=$(echo $WASM_VERSION | awk '{print $1}');\
+      WASMVM_REPO=$(echo $WASM_VERSION | awk '{print $1}' | sed 's|/v2$||');\
       WASMVM_VERS=$(echo $WASM_VERSION | awk '{print $2}');\
-      wget -O /lib/libwasmvm_muslc.a https://${WASMVM_REPO}/releases/download/${WASMVM_VERS}/libwasmvm_muslc.$(uname -m).a;\
+      wget -O /usr/lib/libwasmvm_muslc.$(uname -m).a https://${WASMVM_REPO}/releases/download/${WASMVM_VERS}/libwasmvm_muslc.$(uname -m).a;\
     fi; \
     go mod download;
 
@@ -27,17 +27,26 @@ RUN set -eux; \
 COPY . /code
 
 # force it to use static lib (from above) not standard libgo_cosmwasm.so file
-# then log output of file /code/bin/qcored
+# then log output of file /code/bin/outbe-noded
 # then ensure static linking
 RUN LEDGER_ENABLED=false BUILD_TAGS=muslc LINK_STATICALLY=true make build \
-  && file /code/build/qcored \
+  && file /code/build/outbe-noded \
   && echo "Ensuring binary is statically linked ..." \
-  && (file /code/build/qcored | grep "statically linked")
+  && (file /code/build/outbe-noded | grep "statically linked")
 
 # --------------------------------------------------------
+FROM cosmwasm/optimizer:0.16.0 AS optimizer
+
+RUN apk add jq tar bash
+
+COPY --from=build-env /code/build/outbe-noded /usr/bin/outbe-noded
+
+# Unset entrypoint for being able to use it in CI
+ENTRYPOINT []
+
 FROM alpine:3.21
 
-COPY --from=build-env /code/build/qcored /usr/bin/qcored
+COPY --from=build-env /code/build/outbe-noded /usr/bin/outbe-noded
 
 RUN apk add --no-cache ca-certificates curl make bash jq sed
 
@@ -46,4 +55,4 @@ WORKDIR /opt
 # rest server, tendermint p2p, tendermint rpc
 EXPOSE 1317 26656 26657 8545 8546
 
-CMD ["/usr/bin/qcored", "version"]
+CMD ["/usr/bin/outbe-noded", "version"]

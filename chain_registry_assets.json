@@ -1,23 +1,23 @@
 {
   "$schema": "https://github.com/cosmos/chain-registry/blob/master/assetlist.schema.json",
-  "chain_name": "qcore",
+  "chain_name": "outbe-node",
   "assets": [
     {
-      "description": "The native token of qcore",
+      "description": "The native token of outbe-node",
       "denom_units": [
         {
-          "denom": "qnt",
+          "denom": "outbe",
           "exponent": 0
         },
         {
-          "denom": "QNT",
+          "denom": "OUTBE",
           "exponent": 18
         }
       ],
-      "base": "qnt",
-      "name": "QNT",
-      "display": "qnt",
-      "symbol": "QNT",
+      "base": "outbe",
+      "name": "OUTBE",
+      "display": "outbe",
+      "symbol": "OUTBE",
       "logo_URIs": {
         "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/cosmoshub/images/atom.png",
         "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/cosmoshub/images/atom.svg"

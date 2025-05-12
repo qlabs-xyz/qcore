@@ -59,7 +59,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          tags: qcore:local
+          tags: outbe-node:local
           outputs: type=docker,dest=${{ env.TAR_PATH }}
 
       - name: Upload artifact

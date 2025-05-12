@@ -2,7 +2,7 @@
 
 Reth runs on Linux and macOS (Windows tracked).
 
-There are three core methods to obtain Q Core:
+There are three core methods to obtain OutBe Core:
 
 * [Pre-built binaries](./binaries.md)
 * [Docker images](./docker.md)
@@ -10,7 +10,7 @@ There are three core methods to obtain Q Core:
 
 ## Hardware Requirements
 
-The hardware requirements for running Q Core node depend on the node configuration and can change over time as the network grows or new features are implemented.
+The hardware requirements for running OutBe Core node depend on the node configuration and can change over time as the network grows or new features are implemented.
 
 The most important requirement is by far the disk, whereas CPU and RAM requirements are relatively flexible.
 

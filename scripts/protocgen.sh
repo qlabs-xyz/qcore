@@ -2,7 +2,7 @@
 
 set -e
 
-GO_MOD_PACKAGE="github.com/qlabs-xyz/qcore"
+GO_MOD_PACKAGE="github.com/outbe/outbe-node"
 
 echo "Generating gogo proto code"
 cd proto

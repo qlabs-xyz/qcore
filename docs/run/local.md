@@ -1,8 +1,8 @@
-# Running Q Core Node
+# Running OutBe Core Node
 
-## Running the Q Core Node Local
+## Running the OutBe Core Node Local
 
-First, ensure that you have Q Core Node installed by following the [installation instructions][installation].
+First, ensure that you have OutBe Core Node installed by following the [installation instructions][installation].
 
 Now, to start the local node, run:
 
@@ -18,4 +18,4 @@ A genesis and default configuration will be created.
 CLEAN=false sh scripts/test_node.sh
 ```
 
-At this point, our Q Core node has started. 
+At this point, our OutBe Core node has started. 

@@ -1,14 +1,14 @@
 {
     "chains": [
         {
-            "name": "qcore",
+            "name": "outbe-node",
             "chain_id": "localchain_90001-1",
             "docker_image": {
-                "repository": "qcore",
+                "repository": "outbe-node",
                 "version": "local",
                 "uid-gid": ""
             },
-            "gas_prices": "0.0qnt",
+            "gas_prices": "0.0outbe",
             "gas_adjustment": 2,
             "genesis": {
                 "modify": [
@@ -22,7 +22,7 @@
                     },
                     {
                         "key": "app_state.gov.params.min_deposit.0.denom",
-                        "value": "qnt"
+                        "value": "outbe"
                     },
                     {
                         "key": "app_state.gov.params.min_deposit.0.amount",
@@ -79,9 +79,9 @@
             "number_node": 0,
             "chain_type": "cosmos",
             "coin_type": 60,
-            "binary": "qcored",
-            "bech32_prefix": "q",
-            "denom": "qnt",
+            "binary": "outbe-noded",
+            "bech32_prefix": "outbe",
+            "denom": "outbe",
             "trusting_period": "336h",
             "debugging": false,
             "block_time": "2000ms",
@@ -94,10 +94,10 @@
             "ics_version_override": {}
         },
         {
-            "name": "qcore",
+            "name": "outbe-node",
             "chain_id": "localchain_9000-2",
             "docker_image": {
-                "repository": "qcore",
+                "repository": "outbe-node",
                 "version": "local",
                 "uid-gid": ""
             },
@@ -115,7 +115,7 @@
                     },
                     {
                         "key": "app_state.gov.params.min_deposit.0.denom",
-                        "value": "qnt"
+                        "value": "outbe"
                     },
                     {
                         "key": "app_state.gov.params.min_deposit.0.amount",
@@ -156,9 +156,9 @@
             "number_node": 0,
             "chain_type": "cosmos",
             "coin_type": 60,
-            "binary": "qcored",
-            "bech32_prefix": "q",
-            "denom": "qnt",
+            "binary": "outbe-noded",
+            "bech32_prefix": "outbe",
+            "denom": "outbe",
             "trusting_period": "336h",
             "debugging": false,
             "block_time": "2000ms",

@@ -180,9 +180,9 @@ import (
 )
 
 const (
-	appName      = "qcore"
-	NodeDir      = ".qcore"
-	Bech32Prefix = "q"
+	appName      = "outbe-node"
+	NodeDir      = ".outbe-node"
+	Bech32Prefix = "outbe"
 
 	ChainID = "localchain_90001-1"
 )
@@ -218,8 +218,8 @@ var (
 
 	BaseDenomUnit int64 = 18
 
-	BaseDenom    = "qnt"
-	DisplayDenom = "QNC"
+	BaseDenom    = "outbe"
+	DisplayDenom = "OUTBE"
 
 	// Bech32PrefixAccAddr defines the Bech32 prefix of an account's address
 	Bech32PrefixAccAddr = Bech32Prefix
@@ -1161,7 +1161,7 @@ func NewChainApp(
 
 	// must be before Loading version
 	// requires the snapshot store to be created and registered as a BaseAppOption
-	// see cmd/qcored/root.go: 206 - 214 approx
+	// see cmd/outbe-noded/root.go: 206 - 214 approx
 	if manager := app.SnapshotManager(); manager != nil {
 		err := manager.RegisterExtensions(
 			wasmkeeper.NewWasmSnapshotter(app.CommitMultiStore(), &app.WasmKeeper),
