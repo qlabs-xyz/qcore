@@ -1,0 +1,60 @@
+name: Build and Push Builder Image
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag-version:
+        description: 'Additional version tag (optional)'
+        required: false
+        default: ''
+      push-latest:
+        description: 'Push latest tag'
+        required: true
+        default: true
+        type: boolean
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build local image
+        run: make local-builder-image
+        # This command will create outbe-wasm-builder:latest
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Tag and push image to GHCR
+        run: |
+          # Base path for the image in GHCR
+          GHCR_IMAGE="ghcr.io/${{ github.repository_owner }}/outbe-wasm-builder"
+          
+          # Tag with commit SHA
+          docker tag outbe-wasm-builder:latest $GHCR_IMAGE:sha-${{ github.sha }}
+          echo "Pushing image with tag sha-${{ github.sha }}"
+          docker push $GHCR_IMAGE:sha-${{ github.sha }}
+          
+          # Tag as latest if selected
+          if [[ "${{ inputs.push-latest }}" == "true" ]]; then
+            echo "Pushing image with latest tag"
+            docker tag outbe-wasm-builder:latest $GHCR_IMAGE:latest
+            docker push $GHCR_IMAGE:latest
+          fi
+          
+          # Add custom tag if provided
+          if [[ -n "${{ inputs.tag-version }}" ]]; then
+            echo "Pushing image with custom tag ${{ inputs.tag-version }}"
+            docker tag outbe-wasm-builder:latest $GHCR_IMAGE:${{ inputs.tag-version }}
+            docker push $GHCR_IMAGE:${{ inputs.tag-version }}
+          fi
