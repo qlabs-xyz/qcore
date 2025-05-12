@@ -56,15 +56,6 @@ func NewKeeper(
 	}
 }
 
-// func (k Keeper) TokenSupply(ctx sdk.Context, denom string) math.Int {
-// 	return k.bankKeeper.GetSupply(ctx, denom).Amount
-// }
-
-// func (k Keeper) BondedRatio(ctx sdk.Context) math.LegacyDec {
-// 	result, _ := k.stakingKeeper.BondedRatio(ctx)
-// 	return result
-// }
-
 // GetLogger returns a logger instance with optional log printing based on the PrintLogs environment variable.
 func (k Keeper) Logger(ctx sdk.Context) log.Logger {
 	printLogs, err := strconv.ParseBool(os.Getenv("PrintLogs"))

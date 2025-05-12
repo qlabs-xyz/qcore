@@ -3,7 +3,7 @@ package keeper
 import (
 	"context"
 
-	storetypes "cosmossdk.io/store/types"
+	"cosmossdk.io/store/prefix"
 	"github.com/cosmos/cosmos-sdk/runtime"
 	"github.com/qlabs-xyz/qcore/x/pool/types"
 )
@@ -11,12 +11,14 @@ import (
 func (k Keeper) SetTribute(ctx context.Context, tributeDetails types.Tribute) error {
 	store := k.storeService.OpenKVStore(ctx)
 	b := k.cdc.MustMarshal(&tributeDetails)
-	return store.Set(types.GetTributeKey(tributeDetails.Creator), b)
+	key := types.GetTributeKey(tributeDetails.Id)
+	return store.Set(key, b)
 }
 
-func (k Keeper) GetTribute(ctx context.Context) (list []types.Tribute) {
+func (k Keeper) GetTributeAll(ctx context.Context) (list []types.Tribute) {
 	store := runtime.KVStoreAdapter(k.storeService.OpenKVStore(ctx))
-	iterator := storetypes.KVStorePrefixIterator(store, types.TributeKey)
+	tributeStore := prefix.NewStore(store, types.TributeKey)
+	iterator := tributeStore.Iterator(nil, nil)
 
 	defer iterator.Close()
 

@@ -14,7 +14,7 @@ func (k Keeper) GetBlockEmission(goCtx context.Context, req *types.QueryBlockEmi
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
 	if req == nil {
-		return nil, errors.New("request is nil")
+		return nil, errors.New("[GetBlockEmission] failed. request is nil")
 	}
 
 	if ctx.BlockHeight() < constants.TransitionBlockNumber {
@@ -25,14 +25,14 @@ func (k Keeper) GetBlockEmission(goCtx context.Context, req *types.QueryBlockEmi
 
 		tokens, err := k.CalculateExponentialBlockEmission(req.BlockNumber)
 		if err != nil {
-			return nil, errors.New("CalculateExponentialTokens failed")
+			return nil, errors.New("[GetBlockEmission][CalculateExponentialBlockEmission] failed.CalculateExponentialTokens failed")
 		}
 		return &types.QueryBlockEmissionResponse{Tokens: tokens}, nil
 	}
 
 	tokens, err := k.CalculateFixedBlockEmission(goCtx)
 	if err != nil {
-		return nil, errors.New("CalculateFixedTokens failed")
+		return nil, errors.New("[GetBlockEmission][CalculateFixedBlockEmission] failed. CalculateFixedTokens failed")
 	}
 
 	return &types.QueryBlockEmissionResponse{Tokens: tokens}, nil

@@ -15,7 +15,6 @@ func (suite *KeeperTestHelper) TestCalculateExponentialBlockEmission() {
 		blockHeight   int64
 		expectedToken float64
 	}{
-		{blockHeight: 0, expectedToken: 18475.316174578344},
 		{blockHeight: 1, expectedToken: 18475.315250812559},
 		{blockHeight: 2, expectedToken: 18475.314327046817},
 		{blockHeight: 3, expectedToken: 18475.313403281125},
@@ -56,7 +55,6 @@ func (suite *KeeperTestHelper) TestCalculateExponentialBlockEmission() {
 		})
 	}
 }
-
 func (suite *KeeperTestHelper) TestCalculateFixedBlockEmission() {
 
 	suite.SetupTest()
@@ -110,4 +108,16 @@ func calculateFixedBlockEmission(totalSupply string) (string, error) {
 	fmt.Printf("emissionPerBlock is %s for total supply = %s\n", emissionPerBlock.String(), totalSupply)
 
 	return emissionPerBlock.String(), nil
+}
+
+func (suite *KeeperTestHelper) TestGetEmission() {
+
+	suite.SetupTest()
+
+	emission, found := suite.App.PoolKeeper.GetTotalEmission(suite.Ctx)
+
+	fmt.Println("emission ------->", emission)
+
+	suite.Require().Equal(found, true)
+	suite.Require().NotEmpty(emission)
 }

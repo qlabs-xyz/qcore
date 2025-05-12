@@ -8,7 +8,27 @@ import (
 
 	sdkmath "cosmossdk.io/math"
 	"github.com/qlabs-xyz/qcore/x/pool/constants"
+	"github.com/qlabs-xyz/qcore/x/pool/types"
 )
+
+func (k Keeper) SetEmission(ctx context.Context, emission types.Emission) error {
+	store := k.storeService.OpenKVStore(ctx)
+	b := k.cdc.MustMarshal(&emission)
+	return store.Set(types.GetEmissionKey("pool_emission"), b)
+}
+
+func (k Keeper) GetTotalEmission(ctx context.Context) (val types.Emission, found bool) {
+	store := k.storeService.OpenKVStore(ctx)
+	emissionKey := types.GetEmissionKey("pool_emission")
+	b, err := store.Get(emissionKey)
+
+	if b == nil || err != nil {
+		return val, false
+	}
+
+	k.cdc.MustUnmarshal(b, &val)
+	return val, true
+}
 
 func (k Keeper) CalculateExponentialBlockEmission(blockNumber int64) (string, error) {
 	initialRate, err := sdkmath.LegacyNewDecFromStr(constants.InitialRate)
@@ -58,26 +78,15 @@ func (k Keeper) CalculateFixedBlockEmission(ctx context.Context) (string, error)
 		return "", err
 	}
 
-	totalSupply, err := k.TotalSupply(ctx)
-	if err != nil {
-		return "", err
-	}
-
-	fmt.Println("555555555555555", totalSupply)
-	fmt.Println("6666666666666666666666", err)
-
-	if totalSupply <= "0" {
+	totalSupply := k.TotalSupplyAll(ctx)
+	if totalSupply[0].TotalSupply <= "0" {
 		return "", fmt.Errorf("total supply must be greater than zero")
 	}
 
-	totalSupply = ""
+	totalSupply[0].TotalSupply = ""
 
-	decTotalSupply := sdkmath.LegacyMustNewDecFromStr(totalSupply)
+	decTotalSupply := sdkmath.LegacyMustNewDecFromStr(totalSupply[0].TotalSupply)
 	emissionPerBlock := decTotalSupply.Mul(apr).Quo(daysPerYear).Quo(blocksPerDay)
-
-	fmt.Println("00000000000000000000000000")
-	fmt.Println("1111111111111111111111111", emissionPerBlock)
-	fmt.Println("22222222222222222222222", emissionPerBlock.String())
 
 	return emissionPerBlock.String(), nil
 }
@@ -95,16 +104,12 @@ func (k Keeper) CalculateFixedDailyEmission(ctx context.Context) (string, error)
 		return "", err
 	}
 
-	totalSupply, err := k.TotalSupply(ctx)
-	if err != nil {
-		return "", err
-	}
-
-	if totalSupply <= "0" {
+	totalSupply := k.TotalSupplyAll(ctx)
+	if totalSupply[0].TotalSupply <= "0" {
 		return "", fmt.Errorf("total supply must be greater than zero")
 	}
 
-	decTotalSupply := sdkmath.LegacyMustNewDecFromStr(totalSupply)
+	decTotalSupply := sdkmath.LegacyMustNewDecFromStr(totalSupply[0].TotalSupply)
 	dailyEmissionPerBlock := decTotalSupply.Mul(apr).Quo(daysPerYear)
 
 	return dailyEmissionPerBlock.String(), nil
@@ -118,12 +123,9 @@ func (k Keeper) CalculateFixedAnnualEmission(ctx context.Context) (string, error
 		return "", err
 	}
 
-	totalSupply, err := k.TotalSupply(ctx)
-	if err != nil {
-		return "", err
-	}
+	totalSupply := k.TotalSupplyAll(ctx)
 
-	decTotalSupply := sdkmath.LegacyMustNewDecFromStr(totalSupply)
+	decTotalSupply := sdkmath.LegacyMustNewDecFromStr(totalSupply[0].TotalSupply)
 	annualEmissionPerBlock := decTotalSupply.Mul(apr)
 
 	return annualEmissionPerBlock.String(), nil
