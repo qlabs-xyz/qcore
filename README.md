@@ -32,3 +32,19 @@ Generate the template base with spawn. Requires [npm](https://nodejs.org/en/down
 - `make generate-webapp` *[Cosmology Webapp Template](https://github.com/cosmology-tech/create-cosmos-app)*
 
 Start the testnet with `make testnet`, and open the webapp `cd ./web && yarn dev`
+
+## Docker
+
+Docker file contains two targets:
+
+- Docker `outbe-noded` distribution that can be built by running:
+
+```shell
+docker build --platform linux/amd64 -t outbe-noded:latest .
+```
+
+- Smart contracts builder (for CI) that can be built by running:
+
+```shell
+docker build --platform linux/amd64 --target optimizer -t outbe-wasm-builder:latest . 
+```

@@ -5,3 +5,5 @@ dist/
 # Create cosmos app
 web/
 build
+
+.idea
