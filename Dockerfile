@@ -35,6 +35,16 @@ RUN LEDGER_ENABLED=false BUILD_TAGS=muslc LINK_STATICALLY=true make build \
   && (file /code/build/outbe-noded | grep "statically linked")
 
 # --------------------------------------------------------
+FROM cosmwasm/optimizer:0.16.0 AS optimizer
+
+RUN apk add jq tar bash
+
+COPY --from=build-env /code/build/outbe-noded /usr/bin/outbe-noded
+
+# Unset entrypoint for being able to use it in CI
+ENTRYPOINT []
+  
+# --------------------------------------------------------
 FROM alpine:3.21
 
 COPY --from=build-env /code/build/outbe-noded /usr/bin/outbe-noded
