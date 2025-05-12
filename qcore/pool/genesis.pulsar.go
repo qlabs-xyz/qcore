@@ -13,13 +13,172 @@ import (
 	sync "sync"
 )
 
+var _ protoreflect.List = (*_GenesisState_1_list)(nil)
+
+type _GenesisState_1_list struct {
+	list *[]*Supply
+}
+
+func (x *_GenesisState_1_list) Len() int {
+	if x.list == nil {
+		return 0
+	}
+	return len(*x.list)
+}
+
+func (x *_GenesisState_1_list) Get(i int) protoreflect.Value {
+	return protoreflect.ValueOfMessage((*x.list)[i].ProtoReflect())
+}
+
+func (x *_GenesisState_1_list) Set(i int, value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*Supply)
+	(*x.list)[i] = concreteValue
+}
+
+func (x *_GenesisState_1_list) Append(value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*Supply)
+	*x.list = append(*x.list, concreteValue)
+}
+
+func (x *_GenesisState_1_list) AppendMutable() protoreflect.Value {
+	v := new(Supply)
+	*x.list = append(*x.list, v)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_GenesisState_1_list) Truncate(n int) {
+	for i := n; i < len(*x.list); i++ {
+		(*x.list)[i] = nil
+	}
+	*x.list = (*x.list)[:n]
+}
+
+func (x *_GenesisState_1_list) NewElement() protoreflect.Value {
+	v := new(Supply)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_GenesisState_1_list) IsValid() bool {
+	return x.list != nil
+}
+
+var _ protoreflect.List = (*_GenesisState_2_list)(nil)
+
+type _GenesisState_2_list struct {
+	list *[]*Tribute
+}
+
+func (x *_GenesisState_2_list) Len() int {
+	if x.list == nil {
+		return 0
+	}
+	return len(*x.list)
+}
+
+func (x *_GenesisState_2_list) Get(i int) protoreflect.Value {
+	return protoreflect.ValueOfMessage((*x.list)[i].ProtoReflect())
+}
+
+func (x *_GenesisState_2_list) Set(i int, value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*Tribute)
+	(*x.list)[i] = concreteValue
+}
+
+func (x *_GenesisState_2_list) Append(value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*Tribute)
+	*x.list = append(*x.list, concreteValue)
+}
+
+func (x *_GenesisState_2_list) AppendMutable() protoreflect.Value {
+	v := new(Tribute)
+	*x.list = append(*x.list, v)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_GenesisState_2_list) Truncate(n int) {
+	for i := n; i < len(*x.list); i++ {
+		(*x.list)[i] = nil
+	}
+	*x.list = (*x.list)[:n]
+}
+
+func (x *_GenesisState_2_list) NewElement() protoreflect.Value {
+	v := new(Tribute)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_GenesisState_2_list) IsValid() bool {
+	return x.list != nil
+}
+
+var _ protoreflect.List = (*_GenesisState_3_list)(nil)
+
+type _GenesisState_3_list struct {
+	list *[]*Emission
+}
+
+func (x *_GenesisState_3_list) Len() int {
+	if x.list == nil {
+		return 0
+	}
+	return len(*x.list)
+}
+
+func (x *_GenesisState_3_list) Get(i int) protoreflect.Value {
+	return protoreflect.ValueOfMessage((*x.list)[i].ProtoReflect())
+}
+
+func (x *_GenesisState_3_list) Set(i int, value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*Emission)
+	(*x.list)[i] = concreteValue
+}
+
+func (x *_GenesisState_3_list) Append(value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*Emission)
+	*x.list = append(*x.list, concreteValue)
+}
+
+func (x *_GenesisState_3_list) AppendMutable() protoreflect.Value {
+	v := new(Emission)
+	*x.list = append(*x.list, v)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_GenesisState_3_list) Truncate(n int) {
+	for i := n; i < len(*x.list); i++ {
+		(*x.list)[i] = nil
+	}
+	*x.list = (*x.list)[:n]
+}
+
+func (x *_GenesisState_3_list) NewElement() protoreflect.Value {
+	v := new(Emission)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_GenesisState_3_list) IsValid() bool {
+	return x.list != nil
+}
+
 var (
-	md_GenesisState protoreflect.MessageDescriptor
+	md_GenesisState              protoreflect.MessageDescriptor
+	fd_GenesisState_SupplyList   protoreflect.FieldDescriptor
+	fd_GenesisState_TributeList  protoreflect.FieldDescriptor
+	fd_GenesisState_EmissionList protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_qcore_pool_genesis_proto_init()
 	md_GenesisState = File_qcore_pool_genesis_proto.Messages().ByName("GenesisState")
+	fd_GenesisState_SupplyList = md_GenesisState.Fields().ByName("SupplyList")
+	fd_GenesisState_TributeList = md_GenesisState.Fields().ByName("TributeList")
+	fd_GenesisState_EmissionList = md_GenesisState.Fields().ByName("EmissionList")
 }
 
 var _ protoreflect.Message = (*fastReflection_GenesisState)(nil)
@@ -87,6 +246,24 @@ func (x *fastReflection_GenesisState) Interface() protoreflect.ProtoMessage {
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
 func (x *fastReflection_GenesisState) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if len(x.SupplyList) != 0 {
+		value := protoreflect.ValueOfList(&_GenesisState_1_list{list: &x.SupplyList})
+		if !f(fd_GenesisState_SupplyList, value) {
+			return
+		}
+	}
+	if len(x.TributeList) != 0 {
+		value := protoreflect.ValueOfList(&_GenesisState_2_list{list: &x.TributeList})
+		if !f(fd_GenesisState_TributeList, value) {
+			return
+		}
+	}
+	if len(x.EmissionList) != 0 {
+		value := protoreflect.ValueOfList(&_GenesisState_3_list{list: &x.EmissionList})
+		if !f(fd_GenesisState_EmissionList, value) {
+			return
+		}
+	}
 }
 
 // Has reports whether a field is populated.
@@ -102,6 +279,12 @@ func (x *fastReflection_GenesisState) Range(f func(protoreflect.FieldDescriptor,
 // a repeated field is populated if it is non-empty.
 func (x *fastReflection_GenesisState) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
+	case "qcore.pool.GenesisState.SupplyList":
+		return len(x.SupplyList) != 0
+	case "qcore.pool.GenesisState.TributeList":
+		return len(x.TributeList) != 0
+	case "qcore.pool.GenesisState.EmissionList":
+		return len(x.EmissionList) != 0
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: qcore.pool.GenesisState"))
@@ -118,6 +301,12 @@ func (x *fastReflection_GenesisState) Has(fd protoreflect.FieldDescriptor) bool 
 // Clear is a mutating operation and unsafe for concurrent use.
 func (x *fastReflection_GenesisState) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
+	case "qcore.pool.GenesisState.SupplyList":
+		x.SupplyList = nil
+	case "qcore.pool.GenesisState.TributeList":
+		x.TributeList = nil
+	case "qcore.pool.GenesisState.EmissionList":
+		x.EmissionList = nil
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: qcore.pool.GenesisState"))
@@ -134,6 +323,24 @@ func (x *fastReflection_GenesisState) Clear(fd protoreflect.FieldDescriptor) {
 // of the value; to obtain a mutable reference, use Mutable.
 func (x *fastReflection_GenesisState) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
+	case "qcore.pool.GenesisState.SupplyList":
+		if len(x.SupplyList) == 0 {
+			return protoreflect.ValueOfList(&_GenesisState_1_list{})
+		}
+		listValue := &_GenesisState_1_list{list: &x.SupplyList}
+		return protoreflect.ValueOfList(listValue)
+	case "qcore.pool.GenesisState.TributeList":
+		if len(x.TributeList) == 0 {
+			return protoreflect.ValueOfList(&_GenesisState_2_list{})
+		}
+		listValue := &_GenesisState_2_list{list: &x.TributeList}
+		return protoreflect.ValueOfList(listValue)
+	case "qcore.pool.GenesisState.EmissionList":
+		if len(x.EmissionList) == 0 {
+			return protoreflect.ValueOfList(&_GenesisState_3_list{})
+		}
+		listValue := &_GenesisState_3_list{list: &x.EmissionList}
+		return protoreflect.ValueOfList(listValue)
 	default:
 		if descriptor.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: qcore.pool.GenesisState"))
@@ -154,6 +361,18 @@ func (x *fastReflection_GenesisState) Get(descriptor protoreflect.FieldDescripto
 // Set is a mutating operation and unsafe for concurrent use.
 func (x *fastReflection_GenesisState) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
+	case "qcore.pool.GenesisState.SupplyList":
+		lv := value.List()
+		clv := lv.(*_GenesisState_1_list)
+		x.SupplyList = *clv.list
+	case "qcore.pool.GenesisState.TributeList":
+		lv := value.List()
+		clv := lv.(*_GenesisState_2_list)
+		x.TributeList = *clv.list
+	case "qcore.pool.GenesisState.EmissionList":
+		lv := value.List()
+		clv := lv.(*_GenesisState_3_list)
+		x.EmissionList = *clv.list
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: qcore.pool.GenesisState"))
@@ -174,6 +393,24 @@ func (x *fastReflection_GenesisState) Set(fd protoreflect.FieldDescriptor, value
 // Mutable is a mutating operation and unsafe for concurrent use.
 func (x *fastReflection_GenesisState) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
+	case "qcore.pool.GenesisState.SupplyList":
+		if x.SupplyList == nil {
+			x.SupplyList = []*Supply{}
+		}
+		value := &_GenesisState_1_list{list: &x.SupplyList}
+		return protoreflect.ValueOfList(value)
+	case "qcore.pool.GenesisState.TributeList":
+		if x.TributeList == nil {
+			x.TributeList = []*Tribute{}
+		}
+		value := &_GenesisState_2_list{list: &x.TributeList}
+		return protoreflect.ValueOfList(value)
+	case "qcore.pool.GenesisState.EmissionList":
+		if x.EmissionList == nil {
+			x.EmissionList = []*Emission{}
+		}
+		value := &_GenesisState_3_list{list: &x.EmissionList}
+		return protoreflect.ValueOfList(value)
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: qcore.pool.GenesisState"))
@@ -187,6 +424,15 @@ func (x *fastReflection_GenesisState) Mutable(fd protoreflect.FieldDescriptor) p
 // For lists, maps, and messages, this returns a new, empty, mutable value.
 func (x *fastReflection_GenesisState) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
+	case "qcore.pool.GenesisState.SupplyList":
+		list := []*Supply{}
+		return protoreflect.ValueOfList(&_GenesisState_1_list{list: &list})
+	case "qcore.pool.GenesisState.TributeList":
+		list := []*Tribute{}
+		return protoreflect.ValueOfList(&_GenesisState_2_list{list: &list})
+	case "qcore.pool.GenesisState.EmissionList":
+		list := []*Emission{}
+		return protoreflect.ValueOfList(&_GenesisState_3_list{list: &list})
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: qcore.pool.GenesisState"))
@@ -256,6 +502,24 @@ func (x *fastReflection_GenesisState) ProtoMethods() *protoiface.Methods {
 		var n int
 		var l int
 		_ = l
+		if len(x.SupplyList) > 0 {
+			for _, e := range x.SupplyList {
+				l = options.Size(e)
+				n += 1 + l + runtime.Sov(uint64(l))
+			}
+		}
+		if len(x.TributeList) > 0 {
+			for _, e := range x.TributeList {
+				l = options.Size(e)
+				n += 1 + l + runtime.Sov(uint64(l))
+			}
+		}
+		if len(x.EmissionList) > 0 {
+			for _, e := range x.EmissionList {
+				l = options.Size(e)
+				n += 1 + l + runtime.Sov(uint64(l))
+			}
+		}
 		if x.unknownFields != nil {
 			n += len(x.unknownFields)
 		}
@@ -284,6 +548,54 @@ func (x *fastReflection_GenesisState) ProtoMethods() *protoiface.Methods {
 		if x.unknownFields != nil {
 			i -= len(x.unknownFields)
 			copy(dAtA[i:], x.unknownFields)
+		}
+		if len(x.EmissionList) > 0 {
+			for iNdEx := len(x.EmissionList) - 1; iNdEx >= 0; iNdEx-- {
+				encoded, err := options.Marshal(x.EmissionList[iNdEx])
+				if err != nil {
+					return protoiface.MarshalOutput{
+						NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+						Buf:               input.Buf,
+					}, err
+				}
+				i -= len(encoded)
+				copy(dAtA[i:], encoded)
+				i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
+				i--
+				dAtA[i] = 0x1a
+			}
+		}
+		if len(x.TributeList) > 0 {
+			for iNdEx := len(x.TributeList) - 1; iNdEx >= 0; iNdEx-- {
+				encoded, err := options.Marshal(x.TributeList[iNdEx])
+				if err != nil {
+					return protoiface.MarshalOutput{
+						NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+						Buf:               input.Buf,
+					}, err
+				}
+				i -= len(encoded)
+				copy(dAtA[i:], encoded)
+				i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
+				i--
+				dAtA[i] = 0x12
+			}
+		}
+		if len(x.SupplyList) > 0 {
+			for iNdEx := len(x.SupplyList) - 1; iNdEx >= 0; iNdEx-- {
+				encoded, err := options.Marshal(x.SupplyList[iNdEx])
+				if err != nil {
+					return protoiface.MarshalOutput{
+						NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+						Buf:               input.Buf,
+					}, err
+				}
+				i -= len(encoded)
+				copy(dAtA[i:], encoded)
+				i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
+				i--
+				dAtA[i] = 0xa
+			}
 		}
 		if input.Buf != nil {
 			input.Buf = append(input.Buf, dAtA...)
@@ -334,6 +646,108 @@ func (x *fastReflection_GenesisState) ProtoMethods() *protoiface.Methods {
 				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: GenesisState: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
+			case 1:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field SupplyList", wireType)
+				}
+				var msglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					msglen |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if msglen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + msglen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.SupplyList = append(x.SupplyList, &Supply{})
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.SupplyList[len(x.SupplyList)-1]); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				iNdEx = postIndex
+			case 2:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field TributeList", wireType)
+				}
+				var msglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					msglen |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if msglen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + msglen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.TributeList = append(x.TributeList, &Tribute{})
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.TributeList[len(x.TributeList)-1]); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				iNdEx = postIndex
+			case 3:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field EmissionList", wireType)
+				}
+				var msglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					msglen |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if msglen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + msglen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.EmissionList = append(x.EmissionList, &Emission{})
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.EmissionList[len(x.EmissionList)-1]); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				iNdEx = postIndex
 			default:
 				iNdEx = preIndex
 				skippy, err := runtime.Skip(dAtA[iNdEx:])
@@ -382,11 +796,14 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// GenesisState defines the epoch module's genesis state.
 type GenesisState struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
+
+	SupplyList   []*Supply   `protobuf:"bytes,1,rep,name=SupplyList,proto3" json:"SupplyList,omitempty"`
+	TributeList  []*Tribute  `protobuf:"bytes,2,rep,name=TributeList,proto3" json:"TributeList,omitempty"`
+	EmissionList []*Emission `protobuf:"bytes,3,rep,name=EmissionList,proto3" json:"EmissionList,omitempty"`
 }
 
 func (x *GenesisState) Reset() {
@@ -409,24 +826,61 @@ func (*GenesisState) Descriptor() ([]byte, []int) {
 	return file_qcore_pool_genesis_proto_rawDescGZIP(), []int{0}
 }
 
+func (x *GenesisState) GetSupplyList() []*Supply {
+	if x != nil {
+		return x.SupplyList
+	}
+	return nil
+}
+
+func (x *GenesisState) GetTributeList() []*Tribute {
+	if x != nil {
+		return x.TributeList
+	}
+	return nil
+}
+
+func (x *GenesisState) GetEmissionList() []*Emission {
+	if x != nil {
+		return x.EmissionList
+	}
+	return nil
+}
+
 var File_qcore_pool_genesis_proto protoreflect.FileDescriptor
 
 var file_qcore_pool_genesis_proto_rawDesc = []byte{
 	0x0a, 0x18, 0x71, 0x63, 0x6f, 0x72, 0x65, 0x2f, 0x70, 0x6f, 0x6f, 0x6c, 0x2f, 0x67, 0x65, 0x6e,
 	0x65, 0x73, 0x69, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x0a, 0x71, 0x63, 0x6f, 0x72,
 	0x65, 0x2e, 0x70, 0x6f, 0x6f, 0x6c, 0x1a, 0x14, 0x67, 0x6f, 0x67, 0x6f, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x2f, 0x67, 0x6f, 0x67, 0x6f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x0e, 0x0a, 0x0c,
-	0x47, 0x65, 0x6e, 0x65, 0x73, 0x69, 0x73, 0x53, 0x74, 0x61, 0x74, 0x65, 0x42, 0x92, 0x01, 0x0a,
-	0x0e, 0x63, 0x6f, 0x6d, 0x2e, 0x71, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x70, 0x6f, 0x6f, 0x6c, 0x42,
-	0x0c, 0x47, 0x65, 0x6e, 0x65, 0x73, 0x69, 0x73, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a,
-	0x29, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x71, 0x6c, 0x61, 0x62,
-	0x73, 0x2d, 0x78, 0x79, 0x7a, 0x2f, 0x71, 0x63, 0x6f, 0x72, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f,
-	0x71, 0x63, 0x6f, 0x72, 0x65, 0x2f, 0x70, 0x6f, 0x6f, 0x6c, 0xa2, 0x02, 0x03, 0x51, 0x50, 0x58,
-	0xaa, 0x02, 0x0a, 0x51, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x50, 0x6f, 0x6f, 0x6c, 0xca, 0x02, 0x0a,
-	0x51, 0x63, 0x6f, 0x72, 0x65, 0x5c, 0x50, 0x6f, 0x6f, 0x6c, 0xe2, 0x02, 0x16, 0x51, 0x63, 0x6f,
-	0x72, 0x65, 0x5c, 0x50, 0x6f, 0x6f, 0x6c, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64,
-	0x61, 0x74, 0x61, 0xea, 0x02, 0x0b, 0x51, 0x63, 0x6f, 0x72, 0x65, 0x3a, 0x3a, 0x50, 0x6f, 0x6f,
-	0x6c, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6f, 0x2f, 0x67, 0x6f, 0x67, 0x6f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x17, 0x71, 0x63,
+	0x6f, 0x72, 0x65, 0x2f, 0x70, 0x6f, 0x6f, 0x6c, 0x2f, 0x73, 0x75, 0x70, 0x70, 0x6c, 0x79, 0x2e,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x18, 0x71, 0x63, 0x6f, 0x72, 0x65, 0x2f, 0x70, 0x6f, 0x6f,
+	0x6c, 0x2f, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a,
+	0x19, 0x71, 0x63, 0x6f, 0x72, 0x65, 0x2f, 0x70, 0x6f, 0x6f, 0x6c, 0x2f, 0x65, 0x6d, 0x69, 0x73,
+	0x73, 0x69, 0x6f, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xc5, 0x01, 0x0a, 0x0c, 0x47,
+	0x65, 0x6e, 0x65, 0x73, 0x69, 0x73, 0x53, 0x74, 0x61, 0x74, 0x65, 0x12, 0x38, 0x0a, 0x0a, 0x53,
+	0x75, 0x70, 0x70, 0x6c, 0x79, 0x4c, 0x69, 0x73, 0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x12, 0x2e, 0x71, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x70, 0x6f, 0x6f, 0x6c, 0x2e, 0x53, 0x75, 0x70,
+	0x70, 0x6c, 0x79, 0x42, 0x04, 0xc8, 0xde, 0x1f, 0x00, 0x52, 0x0a, 0x53, 0x75, 0x70, 0x70, 0x6c,
+	0x79, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x3b, 0x0a, 0x0b, 0x54, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65,
+	0x4c, 0x69, 0x73, 0x74, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x13, 0x2e, 0x71, 0x63, 0x6f,
+	0x72, 0x65, 0x2e, 0x70, 0x6f, 0x6f, 0x6c, 0x2e, 0x54, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65, 0x42,
+	0x04, 0xc8, 0xde, 0x1f, 0x00, 0x52, 0x0b, 0x54, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65, 0x4c, 0x69,
+	0x73, 0x74, 0x12, 0x3e, 0x0a, 0x0c, 0x45, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x4c, 0x69,
+	0x73, 0x74, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x71, 0x63, 0x6f, 0x72, 0x65,
+	0x2e, 0x70, 0x6f, 0x6f, 0x6c, 0x2e, 0x45, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x42, 0x04,
+	0xc8, 0xde, 0x1f, 0x00, 0x52, 0x0c, 0x45, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x4c, 0x69,
+	0x73, 0x74, 0x42, 0x92, 0x01, 0x0a, 0x0e, 0x63, 0x6f, 0x6d, 0x2e, 0x71, 0x63, 0x6f, 0x72, 0x65,
+	0x2e, 0x70, 0x6f, 0x6f, 0x6c, 0x42, 0x0c, 0x47, 0x65, 0x6e, 0x65, 0x73, 0x69, 0x73, 0x50, 0x72,
+	0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x29, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f,
+	0x6d, 0x2f, 0x71, 0x6c, 0x61, 0x62, 0x73, 0x2d, 0x78, 0x79, 0x7a, 0x2f, 0x71, 0x63, 0x6f, 0x72,
+	0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x71, 0x63, 0x6f, 0x72, 0x65, 0x2f, 0x70, 0x6f, 0x6f, 0x6c,
+	0xa2, 0x02, 0x03, 0x51, 0x50, 0x58, 0xaa, 0x02, 0x0a, 0x51, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x50,
+	0x6f, 0x6f, 0x6c, 0xca, 0x02, 0x0a, 0x51, 0x63, 0x6f, 0x72, 0x65, 0x5c, 0x50, 0x6f, 0x6f, 0x6c,
+	0xe2, 0x02, 0x16, 0x51, 0x63, 0x6f, 0x72, 0x65, 0x5c, 0x50, 0x6f, 0x6f, 0x6c, 0x5c, 0x47, 0x50,
+	0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x0b, 0x51, 0x63, 0x6f, 0x72,
+	0x65, 0x3a, 0x3a, 0x50, 0x6f, 0x6f, 0x6c, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -444,13 +898,19 @@ func file_qcore_pool_genesis_proto_rawDescGZIP() []byte {
 var file_qcore_pool_genesis_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_qcore_pool_genesis_proto_goTypes = []interface{}{
 	(*GenesisState)(nil), // 0: qcore.pool.GenesisState
+	(*Supply)(nil),       // 1: qcore.pool.Supply
+	(*Tribute)(nil),      // 2: qcore.pool.Tribute
+	(*Emission)(nil),     // 3: qcore.pool.Emission
 }
 var file_qcore_pool_genesis_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	1, // 0: qcore.pool.GenesisState.SupplyList:type_name -> qcore.pool.Supply
+	2, // 1: qcore.pool.GenesisState.TributeList:type_name -> qcore.pool.Tribute
+	3, // 2: qcore.pool.GenesisState.EmissionList:type_name -> qcore.pool.Emission
+	3, // [3:3] is the sub-list for method output_type
+	3, // [3:3] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_qcore_pool_genesis_proto_init() }
@@ -458,6 +918,9 @@ func file_qcore_pool_genesis_proto_init() {
 	if File_qcore_pool_genesis_proto != nil {
 		return
 	}
+	file_qcore_pool_supply_proto_init()
+	file_qcore_pool_tribute_proto_init()
+	file_qcore_pool_emission_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_qcore_pool_genesis_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GenesisState); i {

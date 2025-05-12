@@ -15,31 +15,31 @@ import (
 )
 
 var (
-	md_MsgMintTributeRequest                  protoreflect.MessageDescriptor
-	fd_MsgMintTributeRequest_creator          protoreflect.FieldDescriptor
-	fd_MsgMintTributeRequest_contract_address protoreflect.FieldDescriptor
-	fd_MsgMintTributeRequest_mint_amount      protoreflect.FieldDescriptor
-	fd_MsgMintTributeRequest_receipt_address  protoreflect.FieldDescriptor
+	md_MsgMintTribute                  protoreflect.MessageDescriptor
+	fd_MsgMintTribute_creator          protoreflect.FieldDescriptor
+	fd_MsgMintTribute_contract_address protoreflect.FieldDescriptor
+	fd_MsgMintTribute_mint_amount      protoreflect.FieldDescriptor
+	fd_MsgMintTribute_receipt_address  protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_qcore_pool_tx_proto_init()
-	md_MsgMintTributeRequest = File_qcore_pool_tx_proto.Messages().ByName("MsgMintTributeRequest")
-	fd_MsgMintTributeRequest_creator = md_MsgMintTributeRequest.Fields().ByName("creator")
-	fd_MsgMintTributeRequest_contract_address = md_MsgMintTributeRequest.Fields().ByName("contract_address")
-	fd_MsgMintTributeRequest_mint_amount = md_MsgMintTributeRequest.Fields().ByName("mint_amount")
-	fd_MsgMintTributeRequest_receipt_address = md_MsgMintTributeRequest.Fields().ByName("receipt_address")
+	md_MsgMintTribute = File_qcore_pool_tx_proto.Messages().ByName("MsgMintTribute")
+	fd_MsgMintTribute_creator = md_MsgMintTribute.Fields().ByName("creator")
+	fd_MsgMintTribute_contract_address = md_MsgMintTribute.Fields().ByName("contract_address")
+	fd_MsgMintTribute_mint_amount = md_MsgMintTribute.Fields().ByName("mint_amount")
+	fd_MsgMintTribute_receipt_address = md_MsgMintTribute.Fields().ByName("receipt_address")
 }
 
-var _ protoreflect.Message = (*fastReflection_MsgMintTributeRequest)(nil)
+var _ protoreflect.Message = (*fastReflection_MsgMintTribute)(nil)
 
-type fastReflection_MsgMintTributeRequest MsgMintTributeRequest
+type fastReflection_MsgMintTribute MsgMintTribute
 
-func (x *MsgMintTributeRequest) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_MsgMintTributeRequest)(x)
+func (x *MsgMintTribute) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_MsgMintTribute)(x)
 }
 
-func (x *MsgMintTributeRequest) slowProtoReflect() protoreflect.Message {
+func (x *MsgMintTribute) slowProtoReflect() protoreflect.Message {
 	mi := &file_qcore_pool_tx_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -51,43 +51,43 @@ func (x *MsgMintTributeRequest) slowProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_MsgMintTributeRequest_messageType fastReflection_MsgMintTributeRequest_messageType
-var _ protoreflect.MessageType = fastReflection_MsgMintTributeRequest_messageType{}
+var _fastReflection_MsgMintTribute_messageType fastReflection_MsgMintTribute_messageType
+var _ protoreflect.MessageType = fastReflection_MsgMintTribute_messageType{}
 
-type fastReflection_MsgMintTributeRequest_messageType struct{}
+type fastReflection_MsgMintTribute_messageType struct{}
 
-func (x fastReflection_MsgMintTributeRequest_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_MsgMintTributeRequest)(nil)
+func (x fastReflection_MsgMintTribute_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_MsgMintTribute)(nil)
 }
-func (x fastReflection_MsgMintTributeRequest_messageType) New() protoreflect.Message {
-	return new(fastReflection_MsgMintTributeRequest)
+func (x fastReflection_MsgMintTribute_messageType) New() protoreflect.Message {
+	return new(fastReflection_MsgMintTribute)
 }
-func (x fastReflection_MsgMintTributeRequest_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgMintTributeRequest
+func (x fastReflection_MsgMintTribute_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgMintTribute
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_MsgMintTributeRequest) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgMintTributeRequest
+func (x *fastReflection_MsgMintTribute) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgMintTribute
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_MsgMintTributeRequest) Type() protoreflect.MessageType {
-	return _fastReflection_MsgMintTributeRequest_messageType
+func (x *fastReflection_MsgMintTribute) Type() protoreflect.MessageType {
+	return _fastReflection_MsgMintTribute_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_MsgMintTributeRequest) New() protoreflect.Message {
-	return new(fastReflection_MsgMintTributeRequest)
+func (x *fastReflection_MsgMintTribute) New() protoreflect.Message {
+	return new(fastReflection_MsgMintTribute)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_MsgMintTributeRequest) Interface() protoreflect.ProtoMessage {
-	return (*MsgMintTributeRequest)(x)
+func (x *fastReflection_MsgMintTribute) Interface() protoreflect.ProtoMessage {
+	return (*MsgMintTribute)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -95,28 +95,28 @@ func (x *fastReflection_MsgMintTributeRequest) Interface() protoreflect.ProtoMes
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_MsgMintTributeRequest) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+func (x *fastReflection_MsgMintTribute) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
 	if x.Creator != "" {
 		value := protoreflect.ValueOfString(x.Creator)
-		if !f(fd_MsgMintTributeRequest_creator, value) {
+		if !f(fd_MsgMintTribute_creator, value) {
 			return
 		}
 	}
 	if x.ContractAddress != "" {
 		value := protoreflect.ValueOfString(x.ContractAddress)
-		if !f(fd_MsgMintTributeRequest_contract_address, value) {
+		if !f(fd_MsgMintTribute_contract_address, value) {
 			return
 		}
 	}
 	if x.MintAmount != uint64(0) {
 		value := protoreflect.ValueOfUint64(x.MintAmount)
-		if !f(fd_MsgMintTributeRequest_mint_amount, value) {
+		if !f(fd_MsgMintTribute_mint_amount, value) {
 			return
 		}
 	}
 	if x.ReceiptAddress != "" {
 		value := protoreflect.ValueOfString(x.ReceiptAddress)
-		if !f(fd_MsgMintTributeRequest_receipt_address, value) {
+		if !f(fd_MsgMintTribute_receipt_address, value) {
 			return
 		}
 	}
@@ -133,21 +133,21 @@ func (x *fastReflection_MsgMintTributeRequest) Range(f func(protoreflect.FieldDe
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_MsgMintTributeRequest) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_MsgMintTribute) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "qcore.pool.MsgMintTributeRequest.creator":
+	case "qcore.pool.MsgMintTribute.creator":
 		return x.Creator != ""
-	case "qcore.pool.MsgMintTributeRequest.contract_address":
+	case "qcore.pool.MsgMintTribute.contract_address":
 		return x.ContractAddress != ""
-	case "qcore.pool.MsgMintTributeRequest.mint_amount":
+	case "qcore.pool.MsgMintTribute.mint_amount":
 		return x.MintAmount != uint64(0)
-	case "qcore.pool.MsgMintTributeRequest.receipt_address":
+	case "qcore.pool.MsgMintTribute.receipt_address":
 		return x.ReceiptAddress != ""
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: qcore.pool.MsgMintTributeRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: qcore.pool.MsgMintTribute"))
 		}
-		panic(fmt.Errorf("message qcore.pool.MsgMintTributeRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message qcore.pool.MsgMintTribute does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -157,21 +157,21 @@ func (x *fastReflection_MsgMintTributeRequest) Has(fd protoreflect.FieldDescript
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgMintTributeRequest) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_MsgMintTribute) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "qcore.pool.MsgMintTributeRequest.creator":
+	case "qcore.pool.MsgMintTribute.creator":
 		x.Creator = ""
-	case "qcore.pool.MsgMintTributeRequest.contract_address":
+	case "qcore.pool.MsgMintTribute.contract_address":
 		x.ContractAddress = ""
-	case "qcore.pool.MsgMintTributeRequest.mint_amount":
+	case "qcore.pool.MsgMintTribute.mint_amount":
 		x.MintAmount = uint64(0)
-	case "qcore.pool.MsgMintTributeRequest.receipt_address":
+	case "qcore.pool.MsgMintTribute.receipt_address":
 		x.ReceiptAddress = ""
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: qcore.pool.MsgMintTributeRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: qcore.pool.MsgMintTribute"))
 		}
-		panic(fmt.Errorf("message qcore.pool.MsgMintTributeRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message qcore.pool.MsgMintTribute does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -181,25 +181,25 @@ func (x *fastReflection_MsgMintTributeRequest) Clear(fd protoreflect.FieldDescri
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_MsgMintTributeRequest) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgMintTribute) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "qcore.pool.MsgMintTributeRequest.creator":
+	case "qcore.pool.MsgMintTribute.creator":
 		value := x.Creator
 		return protoreflect.ValueOfString(value)
-	case "qcore.pool.MsgMintTributeRequest.contract_address":
+	case "qcore.pool.MsgMintTribute.contract_address":
 		value := x.ContractAddress
 		return protoreflect.ValueOfString(value)
-	case "qcore.pool.MsgMintTributeRequest.mint_amount":
+	case "qcore.pool.MsgMintTribute.mint_amount":
 		value := x.MintAmount
 		return protoreflect.ValueOfUint64(value)
-	case "qcore.pool.MsgMintTributeRequest.receipt_address":
+	case "qcore.pool.MsgMintTribute.receipt_address":
 		value := x.ReceiptAddress
 		return protoreflect.ValueOfString(value)
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: qcore.pool.MsgMintTributeRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: qcore.pool.MsgMintTribute"))
 		}
-		panic(fmt.Errorf("message qcore.pool.MsgMintTributeRequest does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message qcore.pool.MsgMintTribute does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -213,21 +213,21 @@ func (x *fastReflection_MsgMintTributeRequest) Get(descriptor protoreflect.Field
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgMintTributeRequest) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_MsgMintTribute) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "qcore.pool.MsgMintTributeRequest.creator":
+	case "qcore.pool.MsgMintTribute.creator":
 		x.Creator = value.Interface().(string)
-	case "qcore.pool.MsgMintTributeRequest.contract_address":
+	case "qcore.pool.MsgMintTribute.contract_address":
 		x.ContractAddress = value.Interface().(string)
-	case "qcore.pool.MsgMintTributeRequest.mint_amount":
+	case "qcore.pool.MsgMintTribute.mint_amount":
 		x.MintAmount = value.Uint()
-	case "qcore.pool.MsgMintTributeRequest.receipt_address":
+	case "qcore.pool.MsgMintTribute.receipt_address":
 		x.ReceiptAddress = value.Interface().(string)
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: qcore.pool.MsgMintTributeRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: qcore.pool.MsgMintTribute"))
 		}
-		panic(fmt.Errorf("message qcore.pool.MsgMintTributeRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message qcore.pool.MsgMintTribute does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -241,52 +241,52 @@ func (x *fastReflection_MsgMintTributeRequest) Set(fd protoreflect.FieldDescript
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgMintTributeRequest) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgMintTribute) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "qcore.pool.MsgMintTributeRequest.creator":
-		panic(fmt.Errorf("field creator of message qcore.pool.MsgMintTributeRequest is not mutable"))
-	case "qcore.pool.MsgMintTributeRequest.contract_address":
-		panic(fmt.Errorf("field contract_address of message qcore.pool.MsgMintTributeRequest is not mutable"))
-	case "qcore.pool.MsgMintTributeRequest.mint_amount":
-		panic(fmt.Errorf("field mint_amount of message qcore.pool.MsgMintTributeRequest is not mutable"))
-	case "qcore.pool.MsgMintTributeRequest.receipt_address":
-		panic(fmt.Errorf("field receipt_address of message qcore.pool.MsgMintTributeRequest is not mutable"))
+	case "qcore.pool.MsgMintTribute.creator":
+		panic(fmt.Errorf("field creator of message qcore.pool.MsgMintTribute is not mutable"))
+	case "qcore.pool.MsgMintTribute.contract_address":
+		panic(fmt.Errorf("field contract_address of message qcore.pool.MsgMintTribute is not mutable"))
+	case "qcore.pool.MsgMintTribute.mint_amount":
+		panic(fmt.Errorf("field mint_amount of message qcore.pool.MsgMintTribute is not mutable"))
+	case "qcore.pool.MsgMintTribute.receipt_address":
+		panic(fmt.Errorf("field receipt_address of message qcore.pool.MsgMintTribute is not mutable"))
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: qcore.pool.MsgMintTributeRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: qcore.pool.MsgMintTribute"))
 		}
-		panic(fmt.Errorf("message qcore.pool.MsgMintTributeRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message qcore.pool.MsgMintTribute does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_MsgMintTributeRequest) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgMintTribute) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "qcore.pool.MsgMintTributeRequest.creator":
+	case "qcore.pool.MsgMintTribute.creator":
 		return protoreflect.ValueOfString("")
-	case "qcore.pool.MsgMintTributeRequest.contract_address":
+	case "qcore.pool.MsgMintTribute.contract_address":
 		return protoreflect.ValueOfString("")
-	case "qcore.pool.MsgMintTributeRequest.mint_amount":
+	case "qcore.pool.MsgMintTribute.mint_amount":
 		return protoreflect.ValueOfUint64(uint64(0))
-	case "qcore.pool.MsgMintTributeRequest.receipt_address":
+	case "qcore.pool.MsgMintTribute.receipt_address":
 		return protoreflect.ValueOfString("")
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: qcore.pool.MsgMintTributeRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: qcore.pool.MsgMintTribute"))
 		}
-		panic(fmt.Errorf("message qcore.pool.MsgMintTributeRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message qcore.pool.MsgMintTribute does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_MsgMintTributeRequest) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_MsgMintTribute) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in qcore.pool.MsgMintTributeRequest", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in qcore.pool.MsgMintTribute", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -294,7 +294,7 @@ func (x *fastReflection_MsgMintTributeRequest) WhichOneof(d protoreflect.OneofDe
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_MsgMintTributeRequest) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_MsgMintTribute) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -305,7 +305,7 @@ func (x *fastReflection_MsgMintTributeRequest) GetUnknown() protoreflect.RawFiel
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgMintTributeRequest) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_MsgMintTribute) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -317,7 +317,7 @@ func (x *fastReflection_MsgMintTributeRequest) SetUnknown(fields protoreflect.Ra
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_MsgMintTributeRequest) IsValid() bool {
+func (x *fastReflection_MsgMintTribute) IsValid() bool {
 	return x != nil
 }
 
@@ -327,9 +327,9 @@ func (x *fastReflection_MsgMintTributeRequest) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_MsgMintTributeRequest) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_MsgMintTribute) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*MsgMintTributeRequest)
+		x := input.Message.Interface().(*MsgMintTribute)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -366,7 +366,7 @@ func (x *fastReflection_MsgMintTributeRequest) ProtoMethods() *protoiface.Method
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*MsgMintTributeRequest)
+		x := input.Message.Interface().(*MsgMintTribute)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -422,7 +422,7 @@ func (x *fastReflection_MsgMintTributeRequest) ProtoMethods() *protoiface.Method
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*MsgMintTributeRequest)
+		x := input.Message.Interface().(*MsgMintTribute)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -454,10 +454,10 @@ func (x *fastReflection_MsgMintTributeRequest) ProtoMethods() *protoiface.Method
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgMintTributeRequest: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgMintTribute: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgMintTributeRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgMintTribute: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			case 1:
@@ -980,7 +980,7 @@ const (
 )
 
 // Msg defines the Msg service.
-type MsgMintTributeRequest struct {
+type MsgMintTribute struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -991,8 +991,8 @@ type MsgMintTributeRequest struct {
 	ReceiptAddress  string `protobuf:"bytes,4,opt,name=receipt_address,json=receiptAddress,proto3" json:"receipt_address,omitempty"`
 }
 
-func (x *MsgMintTributeRequest) Reset() {
-	*x = MsgMintTributeRequest{}
+func (x *MsgMintTribute) Reset() {
+	*x = MsgMintTribute{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_qcore_pool_tx_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1000,39 +1000,39 @@ func (x *MsgMintTributeRequest) Reset() {
 	}
 }
 
-func (x *MsgMintTributeRequest) String() string {
+func (x *MsgMintTribute) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MsgMintTributeRequest) ProtoMessage() {}
+func (*MsgMintTribute) ProtoMessage() {}
 
-// Deprecated: Use MsgMintTributeRequest.ProtoReflect.Descriptor instead.
-func (*MsgMintTributeRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use MsgMintTribute.ProtoReflect.Descriptor instead.
+func (*MsgMintTribute) Descriptor() ([]byte, []int) {
 	return file_qcore_pool_tx_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *MsgMintTributeRequest) GetCreator() string {
+func (x *MsgMintTribute) GetCreator() string {
 	if x != nil {
 		return x.Creator
 	}
 	return ""
 }
 
-func (x *MsgMintTributeRequest) GetContractAddress() string {
+func (x *MsgMintTribute) GetContractAddress() string {
 	if x != nil {
 		return x.ContractAddress
 	}
 	return ""
 }
 
-func (x *MsgMintTributeRequest) GetMintAmount() uint64 {
+func (x *MsgMintTribute) GetMintAmount() uint64 {
 	if x != nil {
 		return x.MintAmount
 	}
 	return 0
 }
 
-func (x *MsgMintTributeRequest) GetReceiptAddress() string {
+func (x *MsgMintTribute) GetReceiptAddress() string {
 	if x != nil {
 		return x.ReceiptAddress
 	}
@@ -1073,38 +1073,37 @@ var file_qcore_pool_tx_proto_rawDesc = []byte{
 	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x0a, 0x71, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x70, 0x6f, 0x6f,
 	0x6c, 0x1a, 0x17, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2f, 0x6d, 0x73, 0x67, 0x2f, 0x76, 0x31,
 	0x2f, 0x6d, 0x73, 0x67, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x11, 0x61, 0x6d, 0x69, 0x6e,
-	0x6f, 0x2f, 0x61, 0x6d, 0x69, 0x6e, 0x6f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xcc, 0x01,
-	0x0a, 0x15, 0x4d, 0x73, 0x67, 0x4d, 0x69, 0x6e, 0x74, 0x54, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x72, 0x65, 0x61, 0x74,
-	0x6f, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f,
-	0x72, 0x12, 0x29, 0x0a, 0x10, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x5f, 0x61, 0x64,
-	0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0f, 0x63, 0x6f, 0x6e,
-	0x74, 0x72, 0x61, 0x63, 0x74, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x1f, 0x0a, 0x0b,
-	0x6d, 0x69, 0x6e, 0x74, 0x5f, 0x61, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28,
-	0x04, 0x52, 0x0a, 0x6d, 0x69, 0x6e, 0x74, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x27, 0x0a,
-	0x0f, 0x72, 0x65, 0x63, 0x65, 0x69, 0x70, 0x74, 0x5f, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73,
-	0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0e, 0x72, 0x65, 0x63, 0x65, 0x69, 0x70, 0x74, 0x41,
-	0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x3a, 0x24, 0x82, 0xe7, 0xb0, 0x2a, 0x07, 0x63, 0x72, 0x65,
-	0x61, 0x74, 0x6f, 0x72, 0x8a, 0xe7, 0xb0, 0x2a, 0x13, 0x70, 0x6f, 0x6f, 0x6c, 0x2f, 0x4d, 0x73,
-	0x67, 0x4d, 0x69, 0x6e, 0x74, 0x54, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65, 0x22, 0x18, 0x0a, 0x16,
-	0x4d, 0x73, 0x67, 0x4d, 0x69, 0x6e, 0x74, 0x54, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65, 0x52, 0x65,
-	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x32, 0x62, 0x0a, 0x03, 0x4d, 0x73, 0x67, 0x12, 0x54, 0x0a,
-	0x0b, 0x4d, 0x69, 0x6e, 0x74, 0x54, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65, 0x12, 0x21, 0x2e, 0x71,
-	0x63, 0x6f, 0x72, 0x65, 0x2e, 0x70, 0x6f, 0x6f, 0x6c, 0x2e, 0x4d, 0x73, 0x67, 0x4d, 0x69, 0x6e,
-	0x74, 0x54, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
-	0x22, 0x2e, 0x71, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x70, 0x6f, 0x6f, 0x6c, 0x2e, 0x4d, 0x73, 0x67,
-	0x4d, 0x69, 0x6e, 0x74, 0x54, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f,
-	0x6e, 0x73, 0x65, 0x1a, 0x05, 0x80, 0xe7, 0xb0, 0x2a, 0x01, 0x42, 0x8d, 0x01, 0x0a, 0x0e, 0x63,
-	0x6f, 0x6d, 0x2e, 0x71, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x70, 0x6f, 0x6f, 0x6c, 0x42, 0x07, 0x54,
-	0x78, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x29, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62,
-	0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x71, 0x6c, 0x61, 0x62, 0x73, 0x2d, 0x78, 0x79, 0x7a, 0x2f, 0x71,
-	0x63, 0x6f, 0x72, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x71, 0x63, 0x6f, 0x72, 0x65, 0x2f, 0x70,
-	0x6f, 0x6f, 0x6c, 0xa2, 0x02, 0x03, 0x51, 0x50, 0x58, 0xaa, 0x02, 0x0a, 0x51, 0x63, 0x6f, 0x72,
-	0x65, 0x2e, 0x50, 0x6f, 0x6f, 0x6c, 0xca, 0x02, 0x0a, 0x51, 0x63, 0x6f, 0x72, 0x65, 0x5c, 0x50,
-	0x6f, 0x6f, 0x6c, 0xe2, 0x02, 0x16, 0x51, 0x63, 0x6f, 0x72, 0x65, 0x5c, 0x50, 0x6f, 0x6f, 0x6c,
-	0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x0b, 0x51,
-	0x63, 0x6f, 0x72, 0x65, 0x3a, 0x3a, 0x50, 0x6f, 0x6f, 0x6c, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x33,
+	0x6f, 0x2f, 0x61, 0x6d, 0x69, 0x6e, 0x6f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xc5, 0x01,
+	0x0a, 0x0e, 0x4d, 0x73, 0x67, 0x4d, 0x69, 0x6e, 0x74, 0x54, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65,
+	0x12, 0x18, 0x0a, 0x07, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x07, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x12, 0x29, 0x0a, 0x10, 0x63, 0x6f,
+	0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x5f, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x0f, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x41, 0x64,
+	0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x1f, 0x0a, 0x0b, 0x6d, 0x69, 0x6e, 0x74, 0x5f, 0x61, 0x6d,
+	0x6f, 0x75, 0x6e, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x04, 0x52, 0x0a, 0x6d, 0x69, 0x6e, 0x74,
+	0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x27, 0x0a, 0x0f, 0x72, 0x65, 0x63, 0x65, 0x69, 0x70,
+	0x74, 0x5f, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x0e, 0x72, 0x65, 0x63, 0x65, 0x69, 0x70, 0x74, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x3a,
+	0x24, 0x82, 0xe7, 0xb0, 0x2a, 0x07, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x8a, 0xe7, 0xb0,
+	0x2a, 0x13, 0x70, 0x6f, 0x6f, 0x6c, 0x2f, 0x4d, 0x73, 0x67, 0x4d, 0x69, 0x6e, 0x74, 0x54, 0x72,
+	0x69, 0x62, 0x75, 0x74, 0x65, 0x22, 0x18, 0x0a, 0x16, 0x4d, 0x73, 0x67, 0x4d, 0x69, 0x6e, 0x74,
+	0x54, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x32,
+	0x5b, 0x0a, 0x03, 0x4d, 0x73, 0x67, 0x12, 0x4d, 0x0a, 0x0b, 0x4d, 0x69, 0x6e, 0x74, 0x54, 0x72,
+	0x69, 0x62, 0x75, 0x74, 0x65, 0x12, 0x1a, 0x2e, 0x71, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x70, 0x6f,
+	0x6f, 0x6c, 0x2e, 0x4d, 0x73, 0x67, 0x4d, 0x69, 0x6e, 0x74, 0x54, 0x72, 0x69, 0x62, 0x75, 0x74,
+	0x65, 0x1a, 0x22, 0x2e, 0x71, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x70, 0x6f, 0x6f, 0x6c, 0x2e, 0x4d,
+	0x73, 0x67, 0x4d, 0x69, 0x6e, 0x74, 0x54, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x1a, 0x05, 0x80, 0xe7, 0xb0, 0x2a, 0x01, 0x42, 0x8d, 0x01, 0x0a,
+	0x0e, 0x63, 0x6f, 0x6d, 0x2e, 0x71, 0x63, 0x6f, 0x72, 0x65, 0x2e, 0x70, 0x6f, 0x6f, 0x6c, 0x42,
+	0x07, 0x54, 0x78, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x29, 0x67, 0x69, 0x74, 0x68,
+	0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x71, 0x6c, 0x61, 0x62, 0x73, 0x2d, 0x78, 0x79, 0x7a,
+	0x2f, 0x71, 0x63, 0x6f, 0x72, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x71, 0x63, 0x6f, 0x72, 0x65,
+	0x2f, 0x70, 0x6f, 0x6f, 0x6c, 0xa2, 0x02, 0x03, 0x51, 0x50, 0x58, 0xaa, 0x02, 0x0a, 0x51, 0x63,
+	0x6f, 0x72, 0x65, 0x2e, 0x50, 0x6f, 0x6f, 0x6c, 0xca, 0x02, 0x0a, 0x51, 0x63, 0x6f, 0x72, 0x65,
+	0x5c, 0x50, 0x6f, 0x6f, 0x6c, 0xe2, 0x02, 0x16, 0x51, 0x63, 0x6f, 0x72, 0x65, 0x5c, 0x50, 0x6f,
+	0x6f, 0x6c, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02,
+	0x0b, 0x51, 0x63, 0x6f, 0x72, 0x65, 0x3a, 0x3a, 0x50, 0x6f, 0x6f, 0x6c, 0x62, 0x06, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1121,11 +1120,11 @@ func file_qcore_pool_tx_proto_rawDescGZIP() []byte {
 
 var file_qcore_pool_tx_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_qcore_pool_tx_proto_goTypes = []interface{}{
-	(*MsgMintTributeRequest)(nil),  // 0: qcore.pool.MsgMintTributeRequest
+	(*MsgMintTribute)(nil),         // 0: qcore.pool.MsgMintTribute
 	(*MsgMintTributeResponse)(nil), // 1: qcore.pool.MsgMintTributeResponse
 }
 var file_qcore_pool_tx_proto_depIdxs = []int32{
-	0, // 0: qcore.pool.Msg.MintTribute:input_type -> qcore.pool.MsgMintTributeRequest
+	0, // 0: qcore.pool.Msg.MintTribute:input_type -> qcore.pool.MsgMintTribute
 	1, // 1: qcore.pool.Msg.MintTribute:output_type -> qcore.pool.MsgMintTributeResponse
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
@@ -1141,7 +1140,7 @@ func file_qcore_pool_tx_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_qcore_pool_tx_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgMintTributeRequest); i {
+			switch v := v.(*MsgMintTribute); i {
 			case 0:
 				return &v.state
 			case 1:
