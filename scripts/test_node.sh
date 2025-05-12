@@ -68,9 +68,9 @@ from_scratch () {
     echo $mnemonic | $BINARY keys add $key --keyring-backend $KEYRING --algo $KEYALGO --home $HOME_DIR --recover
   }
 
-  # outbe140fehngcrxvhdt84x729p3f0qmkmea8nlvcx49
+  # outbe140fehngcrxvhdt84x729p3f0qmkmea8nqxn3gl
   add_key $KEY "decorate bright ozone fork gallery riot bus exhaust worth way bone indoor calm squirrel merry zero scheme cotton until shop any excess stage laundry"
-  # outbe1r6yue0vuyj9m7xw78npspt9drq2tmtvgn378xw
+  # outbe1r6yue0vuyj9m7xw78npspt9drq2tmtvgvm4sm5
   add_key $KEY2 "wealth flavor believe regret funny network recall kiss grape useless pepper cram hint member few certain unveil rather brick bargain curious require crowd raise"
 
   $BINARY init $MONIKER --chain-id $CHAIN_ID --default-denom $DENOM --home $HOME_DIR
