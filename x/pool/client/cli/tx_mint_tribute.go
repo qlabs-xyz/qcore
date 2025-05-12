@@ -30,7 +30,7 @@ func CmdMintTribute() *cobra.Command {
 			}
 
 			// Create MsgDistributeAuctionReward
-			msg := &types.MsgMintTributeRequest{
+			msg := &types.MsgMintTribute{
 				Creator:         clientCtx.GetFromAddress().String(),
 				ContractAddress: args[0],
 				MintAmount:      coin,

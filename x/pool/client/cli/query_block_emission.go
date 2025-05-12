@@ -14,7 +14,7 @@ import (
 
 func CmdQueryBlockEmission() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "get-tokens [block_number]",
+		Use:   "block-emission [block_number]",
 		Short: "shows token emission amount every block",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
