@@ -1,8 +1,4 @@
-# Generated With [Spawn](https://github.com/rollchains/spawn)
-
-## Module Scaffolding
-
-- `spawn module new <name>` *Generates a Cosmos module template*
+# Outbe network
 
 ## Content Generation
 
@@ -11,19 +7,25 @@
 ## Testnet
 
 - `make testnet` *IBC testnet from chain <-> local cosmos-hub*
-- `make sh-testnet` *Single node, no IBC. quick iteration*
-- `local-ic chains` *See available testnets from the chains/ directory*
+- `make sh-testnet` *Single node, no IBC. quick iteration*- `local-ic chains` *See available testnets from the chains/ directory*
 - `local-ic start <name>` *Starts a local chain with the given name*
+
 
 ## Local Images
 
-- `make install`      *Builds the chain's binary*
+- `make build`        *Builds the chain's binary in ./build*
+- `make install`      *Builds the chain's binary and install to $GOHOME/bin*
 - `make local-image`  *Builds the chain's docker image*
 
 ## Testing
 
 - `go test ./... -v` *Unit test*
 - `make ictest-*`  *E2E testing*
+
+
+## Build wasm optimizer
+
+- `make local-builder-image`  *Builds the outbe-wasm-builder docker image*
 
 ## Webapp Template
 

@@ -254,6 +254,9 @@ else
 	heighliner build -c outbe-node --local -f chains.yaml
 endif
 
+local-builder-image:
+	docker build --platform linux/amd64 --target optimizer -t outbe-wasm-builder:latest .
+
 .PHONY: get-heighliner local-image is-localic-installed
 
 ###############################################################################
