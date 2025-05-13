@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"math"
 	"strconv"
 
 	errortypes "github.com/outbe/outbe-node/errors"

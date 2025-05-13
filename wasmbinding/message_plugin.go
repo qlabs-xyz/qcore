@@ -2,6 +2,7 @@ package wasmbinding
 
 import (
 	"encoding/json"
+	"math"
 	"strconv"
 
 	errorsmod "cosmossdk.io/errors"
@@ -15,6 +16,8 @@ import (
 
 	poolkeeper "github.com/outbe/outbe-node/x/pool/keeper"
 	pooltypes "github.com/outbe/outbe-node/x/pool/types"
+
+	errortypes "github.com/outbe/outbe-node/errors"
 )
 
 // CustomMessageDecorator returns decorator for custom CosmWasm bindings messages
@@ -74,6 +77,7 @@ func PerformMint(f *poolkeeper.Keeper, b *bankkeeper.BaseKeeper, ctx sdk.Context
 	if err != nil {
 		return errorsmod.Wrap(err, "[PerformMint] failed to parse redumption mint amount.")
 	}
+
 	if mintAmount > math.MaxInt64 {
 		return errorsmod.Wrap(errortypes.ErrInvalidMintAmount, "[PerformMint] failed. Mint amount exceeds maximum allowed value.")
 	}
