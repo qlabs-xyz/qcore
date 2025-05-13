@@ -86,8 +86,8 @@ from_scratch () {
 
   # Gov
   update_test_genesis `printf '.app_state["gov"]["params"]["min_deposit"]=[{"denom":"%s","amount":"1000000"}]' $DENOM`
-  update_test_genesis '.app_state["gov"]["params"]["voting_period"]="30s"'
-  update_test_genesis '.app_state["gov"]["params"]["expedited_voting_period"]="15s"'
+  update_test_genesis '.app_state["gov"]["params"]["voting_period"]="60s"'
+  update_test_genesis '.app_state["gov"]["params"]["expedited_voting_period"]="30s"'
 
   update_test_genesis `printf '.app_state["evm"]["params"]["evm_denom"]="%s"' $DENOM`
   update_test_genesis '.app_state["evm"]["params"]["active_static_precompiles"]=["0x0000000000000000000000000000000000000100","0x0000000000000000000000000000000000000400","0x0000000000000000000000000000000000000800","0x0000000000000000000000000000000000000801","0x0000000000000000000000000000000000000802","0x0000000000000000000000000000000000000803","0x0000000000000000000000000000000000000804","0x0000000000000000000000000000000000000805"]'

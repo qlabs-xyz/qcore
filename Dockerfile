@@ -17,9 +17,9 @@ RUN set -eux; \
     export ARCH=$(uname -m); \
     WASM_VERSION=$(go list -m all | grep github.com/CosmWasm/wasmvm || true); \
     if [ ! -z "${WASM_VERSION}" ]; then \
-      WASMVM_REPO=$(echo $WASM_VERSION | awk '{print $1}');\
+      WASMVM_REPO=$(echo $WASM_VERSION | awk '{print $1}' | sed 's|/v2$||');\
       WASMVM_VERS=$(echo $WASM_VERSION | awk '{print $2}');\
-      wget -O /lib/libwasmvm_muslc.a https://github.com/CosmWasm/wasmvm/releases/download/${WASMVM_VERS}/libwasmvm_muslc.$(uname -m).a;\
+      wget -O /usr/lib/libwasmvm_muslc.$(uname -m).a https://${WASMVM_REPO}/releases/download/${WASMVM_VERS}/libwasmvm_muslc.$(uname -m).a;\
     fi; \
     go mod download;
 
@@ -43,8 +43,17 @@ COPY --from=build-env /code/build/outbe-noded /usr/bin/outbe-noded
 
 # Unset entrypoint for being able to use it in CI
 ENTRYPOINT []
-  
+
 # --------------------------------------------------------
+FROM cosmwasm/optimizer:0.16.0 AS optimizer
+
+RUN apk add jq tar bash
+
+COPY --from=build-env /code/build/outbe-noded /usr/bin/outbe-noded
+
+# Unset entrypoint for being able to use it in CI
+ENTRYPOINT []
+
 FROM alpine:3.21
 
 COPY --from=build-env /code/build/outbe-noded /usr/bin/outbe-noded
