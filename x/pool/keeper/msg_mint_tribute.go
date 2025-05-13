@@ -37,6 +37,9 @@ func (k msgServer) MintTribute(goCtx context.Context, msg *types.MsgMintTribute)
 		return nil, sdkerrors.Wrap(errortypes.ErrInvalidRequest, "[MintTribute][LegacyNewDecFromStr] failed. Total emission not converted.")
 	}
 
+	if msg.MintAmount > math.MaxInt64 {
+		return nil, sdkerrors.Wrap(errortypes.ErrInvalidMintAmount, "[MintTribute] failed. Mint amount exceeds maximum allowed value.")
+	}
 	decMintAmount := sdkmath.LegacyNewDec(int64(msg.MintAmount))
 
 	if decEmission.Sub(decMintAmount).LT(decMintAmount) {

@@ -74,6 +74,9 @@ func PerformMint(f *poolkeeper.Keeper, b *bankkeeper.BaseKeeper, ctx sdk.Context
 	if err != nil {
 		return errorsmod.Wrap(err, "[PerformMint] failed to parse redumption mint amount.")
 	}
+	if mintAmount > math.MaxInt64 {
+		return errorsmod.Wrap(errortypes.ErrInvalidMintAmount, "[PerformMint] failed. Mint amount exceeds maximum allowed value.")
+	}
 
 	msg := &pooltypes.MsgMintTribute{
 		Creator:         bindingMsg.Creator,
