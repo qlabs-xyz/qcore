@@ -45,7 +45,7 @@ message QueryBlockEmissionRequest {
 }
 
 message QueryBlockEmissionResponse {
-  string tokens = 1;
+  string block_emission = 1;
 }
 
 message QueryEmissionRequest {

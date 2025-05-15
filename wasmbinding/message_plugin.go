@@ -84,7 +84,7 @@ func PerformMint(f *poolkeeper.Keeper, b *bankkeeper.BaseKeeper, ctx sdk.Context
 
 	msg := &pooltypes.MsgMintTribute{
 		Creator:         bindingMsg.Creator,
-		ContractAddress: bindingMsg.Creator,
+		ContractAddress: bindingMsg.ContractAddress,
 		MintAmount:      mintAmount,
 		ReceiptAddress:  bindingMsg.ReceiptAddress,
 	}
